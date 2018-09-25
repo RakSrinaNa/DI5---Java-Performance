@@ -9,6 +9,114 @@
 \begin{document}
 	\mccTitle
 	
-	\chapter{Question 1}
-				
+	\chapter{Test des coutils}
+		\section{vmstat}
+			vmstat est un outil en ligne de commande permettant d'obtenir différentes informations sur la VM Java:
+			\begin{easylist}[itemize]
+				@ Nombre de processus:
+				@@ Processus en cours d'exécution
+				@@ Processus dormants qu'on ne peut interrompre
+				@ Mémoire:
+				@@ Mémoire virtuelle utilisée
+				@@ Mémoire libre
+				@@ Mémoire buffer
+				@@ Mémoire cache
+				@@ Mémoire inactive
+				@@ Mémoire active
+				@ Swap
+				@@ Entrée
+				@@ Sortie
+				@ IO
+				@@ Lecture
+				@@ Ecriture
+				@ Système
+				@@ Nombre d'interruptions par seconde
+				@@ Nombre de changement de contexte
+				@ CPU
+				@@ Temps en non-kernel
+				@@ Temps en kernel
+				@@ Temps en attente
+				@@ Temps en attente d'IO
+				@@ Temps pour la VM
+			\end{easylist}
+			
+			\img{vmstat1}{Sortie vmstat au lancement d'Eclipse}{0.5}
+			
+			On peut remarquer que:
+			\begin{easylist}[itemize]
+				@ La mémoire libre diminue tandis que la mémoire cache augmente
+				@ La lecture des fichiers explose
+				@ Une légère augmentation de l'écriture de fichiers de temps en temps
+				@ Le temps CPU non kernel augmente tendis que le temps CPU en attente diminue.	
+			\end{easylist}
+
+			Vmstat nous permet donc d'obtenir des informations globales sur l'état de la VM.
+			Cependant cela ne permet pas une analyse poussée des besoins en resources d'un programme car aucune différenciation n'est faire.
+			
+		\section{iostat}
+			Iostat permet d'obtenir des information générales sur les IOs (par périphérique) et CPU de tout le système.
+			Cela peut être répété $n$ fois avec un interval donné.
+			
+			\img{iostat1}{iostat avec Eclipse ouvert}{0.5}
+			
+			Cet outil est assez peu précis concernant Java étant donné que les statistiques obtenues concernent tout le système.
+			Des interférences d'autres programmes peuvent altérer notre analyse.
+			
+		\section{nicstat}
+			Cet outil est similaire à iostat à la différence qu'il analyse les données transitant par les cartes réseau.
+			
+			\img{nicstat1.png}{Evolution du réseau lors du rafraichissement des packages disponibles dans Eclipse}{0.5}
+			
+		\section{JCMD}
+			\cbo{jcmd} permet d'obtenir les différents processus Java lancés.
+			
+			On peut par la suite lancer \cbo{jcmd <PID> <command>} pour effectuer des commandes sur la JVM.
+			On retrouve notamment la commande help pour obtenir la liste des commandes disponibles.
+			
+			La commande \cbo{Thread.print} affiche tous les threads lancés ainsi que leur status et pile d'appel.
+			
+			La commande \cbo{GC.run} permet de lancer le GC manuellement.
+			
+			De manière générale JCMD se connecte à la VM pour exécuter des commandes pour obtenir des informations sur la VM mais aussi pour exécuter des actions sur celle-ci.
+			
+		\section{JConsole}
+			On retrouve des informations que nous avons déjà pu voir auparavant (Mémoire, Threads, etc.) mais sous forme graphique.
+			
+			Cela permet de voir simplement et rapidement les évolutions au cours du temps.
+			
+			\begin{figure}[H]
+				\begin{minipage}{0.49\textwidth}
+					\img{jconsole1}{Eclipse en fond (vue générale)}{0.25}
+				\end{minipage}
+				\begin{minipage}{0.49\textwidth}
+					\img{jconsole2}{Eclipse en fond (Mémoire heap)}{0.25}
+				\end{minipage}
+			\end{figure}
+			
+			Cependant nous devons nous connecter à une application déjà lancée.
+			Il est donc difficile de récupérer les statistiques au lancement d'une application.
+			
+		\section{JHat}
+			JHat permet d'analyser les fichier hprof de la JVM.
+			
+			Nous pouvons en générer un à la volée grâce à \cbo{jmap -dump:file=<file> <pid>}.
+			Ensuite nous l'ouvrons avec \cbo{jhat <file>}.
+			Dès que le fichier est analysé, un serveur HTTP est crée.
+			Nous retrouvons sur ce dernier les informations du fichier sous forme visuelle.
+			
+			\img{jhat1}{Toutes les classes}{0.4}
+			\img{jhat2}{Détails d'une classe}{0.4}
+			
+		\section{JStack}
+			Affiche la liste des threads de la VM, similaire à \cbo{Thread.print} de jcmd.
+			
+		\section{JVisualVM}
+			Outil similaire à JConsole affichant des graphes des différentes métriques de la VM (mais en plus beau).
+			
+		\section{Java Mission Control}
+			Encore un interface similaire aux autres.
+			Cependant nous pouvons ajouter des plugins afin d'obtenir des interfaces supplémentaires.
+			Nous retrouvons notamment un plugin permettant d'obtenir des informations sur le garbage collector.
+			
+			\img{jmc1}{Plugin GC de Java Mission Control}{0.5}
 \end{document}
