@@ -40,7 +40,7 @@
 				@@ Temps pour la VM
 			\end{easylist}
 			
-			\img{vmstat1}{Sortie vmstat au lancement d'Eclipse}{0.5}
+			\img{vmstat1.png}{Sortie vmstat au lancement d'Eclipse}{0.5}
 			
 			On peut remarquer que:
 			\begin{easylist}[itemize]
@@ -57,7 +57,7 @@
 			Iostat permet d'obtenir des information générales sur les IOs (par périphérique) et CPU de tout le système.
 			Cela peut être répété $n$ fois avec un interval donné.
 			
-			\img{iostat1}{iostat avec Eclipse ouvert}{0.5}
+			\img{iostat1.png}{iostat avec Eclipse ouvert}{0.5}
 			
 			Cet outil est assez peu précis concernant Java étant donné que les statistiques obtenues concernent tout le système.
 			Des interférences d'autres programmes peuvent altérer notre analyse.
@@ -86,10 +86,10 @@
 			
 			\begin{figure}[H]
 				\begin{minipage}{0.49\textwidth}
-					\img{jconsole1}{Eclipse en fond (vue générale)}{0.25}
+					\img{jconsole1.png}{Eclipse en fond (vue générale)}{0.25}
 				\end{minipage}
 				\begin{minipage}{0.49\textwidth}
-					\img{jconsole2}{Eclipse en fond (Mémoire heap)}{0.25}
+					\img{jconsole2.png}{Eclipse en fond (Mémoire heap)}{0.25}
 				\end{minipage}
 			\end{figure}
 			
@@ -104,8 +104,8 @@
 			Dès que le fichier est analysé, un serveur HTTP est crée.
 			Nous retrouvons sur ce dernier les informations du fichier sous forme visuelle.
 			
-			\img{jhat1}{Toutes les classes}{0.4}
-			\img{jhat2}{Détails d'une classe}{0.4}
+			\img{jhat1.png}{Toutes les classes}{0.4}
+			\img{jhat2.png}{Détails d'une classe}{0.4}
 			
 		\section{JStack}
 			Affiche la liste des threads de la VM, similaire à \cbo{Thread.print} de jcmd.
@@ -117,5 +117,5 @@
 			Encore un interface similaire aux autres.
 			Cependant nous pouvons ajouter des plugins afin d'obtenir des interfaces supplémentaires.
 			
-			\img{jmc2}{Plugin GC de Java Mission Control}{0.3}
+			\img{jmc2.png}{Plugin GC de Java Mission Control}{0.3}
 \end{document}
