@@ -22,6 +22,7 @@ public class MyBenchmarkTest {
                 {5, 120},
                 {6, 720},
                 {7, 5040},
+                {12, 479001600}
         });
     }
 
