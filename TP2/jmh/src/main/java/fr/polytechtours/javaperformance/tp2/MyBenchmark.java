@@ -31,14 +31,47 @@
 
 package fr.polytechtours.javaperformance.tp2;
 
-import org.openjdk.jmh.annotations.Benchmark;
+import org.openjdk.jmh.annotations.*;
+import org.openjdk.jmh.infra.Blackhole;
+
+import java.util.concurrent.TimeUnit;
 
 public class MyBenchmark {
 
+
+
+    @State(Scope.Thread)
+    public static class MyState {
+        @Param ({"5", "10"})
+        public int i;
+    }
+
     @Benchmark
-    public void testMethod() {
-        // This is a demo/sample template for building your JMH benchmarks. Edit as needed.
-        // Put your benchmark code here.
+    @Warmup (iterations = 2, time = 8, batchSize = 3)
+    @Measurement (iterations = 2, time = 8, batchSize = 3)
+    public void testFact(MyState state, Blackhole bh) {
+        bh.consume(fact(state.i));
+    }
+
+    @Benchmark
+    @Warmup (iterations = 2, time = 8, batchSize = 3)
+    @Measurement (iterations = 2, time = 8, batchSize = 3)
+    public void testFactRec(MyState state, Blackhole bh) {
+        bh.consume(factRec(state.i));
+    }
+
+    public static int fact(int j){
+        int res = 1;
+        for (int i = 1; i <= j; i++) {
+            res *= i;
+        }
+        return res;
+    }
+
+    public static int factRec(int j){
+        if(j <= 1)
+            return 1;
+        return j * factRec(j-1);
     }
 
 }
