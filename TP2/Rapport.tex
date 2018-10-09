@@ -1,0 +1,82 @@
+\documentclass{report}
+\usepackage{MCC}
+
+\def\footauthor{Thomas COUCHOUD \& Victor COLEAU}
+\title{Java Performance - TP2}
+\author{Thomas COUCHOUD\\\texttt{thomas.couchoud@etu.univ-tours.fr}\\Victor COLEAU\\\texttt{victor.coleau@etu.univ-tours.fr}}
+
+\rowcolors{1}{white}{white}
+\begin{document}
+	\mccTitle
+	
+	\chapter{Etude de JMH}
+		\section{Annotations}
+			JMH fonctionne principalement avec des annotations.
+			Parmi celles-ci nous retrouvons notamment:
+			\begin{easylist}[itemize]
+				@ Benchmark: Permet de définir une méthode comme étant une méthode à tester
+				@ BenchmarkMode: Permet d'indiquer quelles métriques nous voulons étudier, nous avons:
+				@@ Throughput: Mesure le nombre d'opération par seconde
+				@@ Average Time: Mesure le temps moyen d'execution de la méthode
+				@@ Sample Time: Mesure les temps d'exécution de la méthode: min, max, ...
+				@@ Single Shot Time: Mesure le temps d'exécution pour un run unique du benchmark.
+				Cela peut être utile pour voir la performance de la méthode sans le hotspot.
+				@ OutputTimeUnit: Permet de définir les unités de temps utilisées pour les rapports
+				@ Fork: Permet de définir le nombre de JVM qui sont forkées.
+				En effet par défaut la JVM est forkée à chaque "trial" de la méthode à benchmarker, cependant dans certains cas il peut être utile de changer ce comportement.
+				Il faut tout de même faire attention lors de l'utilisation de cette annotation car des comportement anormaux peuvent apparaître (si l'in a deux classes implémentant la même interface par exemple, en effet dans ce cas la première sera plus rapide car la JVM remplace les appels méthodes).
+				@ Group: Cette annotation permet de définir dans quel groupe appartient le test.
+				Cela permet de lancer tout les tests d'un même groupe en même temps (voir annotation suivante).
+				Par défaut chaque méthode est dans un groupe unique.
+				@ GroupThread: Définit le nombre de threads qui sera utilisé pour lancer la méthode.
+				Dans le cas d'un groupe il y aura un nombre de threads égal à la somme de tous les GroupThreads du groupe.
+				@ Measurement: Permet de définir les valeurs par défaut pour le benchmark de la méthode:
+				@@ Nombre d'itération
+				@@ Temps de mesure
+				@@ Taille d'un batch
+				@ State: Annotation à mettre sur une classe afin de définir dans quel état cette dernière sera utilisée:
+				@@ Thread: Valeur par défaut. Une instance de cette classe sera utilisée pour chaque thread qui exécute le benchmark.
+				@@ Benchmark: Une instance unique sera partagée entre tous les threads qui exécutent le même benchmark. 
+				Peut être utile dans le cas de méthodes exécutées en parrallèle.
+				@@ Group: Une instance sera allouée pour chaque groupe.
+				@ TearDown / Setup: Cette annotation permet de marquer les méthodes à lancer avant et après les benchmark.
+				L'appel à ces méthodes peuvent être précisé grâce a une paramètre de l'annotation:
+				@@ Trial: Valeur par défaut. La méthode est appelée après/avant un benchmark entier.
+				@@ Iteration: La méthode est appelée avant/après une itération (plusieurs invocations).
+				@@ Invocation: La méthode est appelée avant/après une invocation (chaque run).
+				@ Timeout: Définit le temps maximum que le benchmark peut prendre.
+				@ Warmup: Définit les paramètres pour la phase de chauffe.
+				Similaire à Measurement mais concerne juste la phase de chauffe.
+				@ CompilerControl: Définit les options de compilation lors d'un fork de la JVM pour le benchmark de cette méthode.
+				Cependant il faut faire attention car le compilateur peut ignorer ces derniers.
+			\end{easylist}
+		
+		\section{BalckHole}
+			Le BlackHole permet de consommer, dans donner d'informations si la valeur est réellement utilisée ou non à JIT (compilation à la volée), des variables ou bien du temps CPU.
+			
+			Dans le cas de variables cela est utile car cela évite que le compilateur réalise des optimisations où la variable ne serait pas calculée.
+			
+		\section{Résultats}
+			Voici la sortie pour un benchmark:
+			%\lstinputlisting[caption=out.log]{out.log}
+			
+			On retrouve entre les lignes 1 à 10 les différentes informations concernant le test.
+			Le reste du fichier (L12-75) contient tous les run.
+			A la fin (78-81) nous obtenons les résultats finaux.
+			
+			\subsection{Informations}
+				On retrouve les informations concernant la JVM (version JDK, version VM, options, ...) ainsi que la version de JMH.
+				De plus nous avons les paramètres de JMH concernant le nombre d'itération et le temps pour les phases de chauffe et de test (voir les annotations Measurement et Warmup).
+				Les valeurs des annotation Timeout, BenchmarkMode, Thread sont aussi présentes.
+			
+			\subsection{Runs}
+				Pour caque run on nous indique la progression total du benchmark ainsi qu'une estimation du temps restant.
+				Suit le numéro du run pour la méthodes testée.
+				Puis on retrouve les différentes itération du warmup avec les valeurs demandées du benchmark pour l'itération donnée.
+				De la même façon suivent les itérations de test.
+			
+			\subsection{Résultats}
+				Les résultats nous affichent (dans notre cas) le nombre d'opérations moyen par seconde avec un taux de fiabilité.
+				De plus les valeurs min et max sont aussi présentes avec leur ecart-type.
+			
+\end{document}
