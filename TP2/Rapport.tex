@@ -56,7 +56,9 @@
 			
 			Dans le cas de variables cela est utile car cela évite que le compilateur réalise des optimisations où la variable ne serait pas calculée.
 			
-		\section{Résultats}
+		\section{Résultats de MyBenchmark}
+			(Code disponible en \autoref{sec:mybenchmark})
+		
 			Voici la sortie pour un benchmark:
 			\lstinputlisting[caption=out.log]{out.log}
 			
@@ -78,5 +80,51 @@
 			\subsection{Résultats}
 				Les résultats nous affichent (dans notre cas) le nombre d'opérations moyen par seconde avec un taux de fiabilité.
 				De plus les valeurs min et max sont aussi présentes avec leur ecart-type.
+				
+			\subsection{Analyse}
+				Problème pour l'analyse car on a benchmark que la factorielle non récursive.
+				Cependant la semaine suivante JMH se lançait avec un JDK9.
+				Afin de ne pas falsifier les résultats nous sommes passés au MyBenchmark2.
+				
+				De plus la factorielle fait rapidement exploser les int et ne nous permet donc pas de tester avec des paramètres d'entré très différents.
+		
+		\section{Résultats - MyBenchmark2}
+			(Code disponible en \autoref{sec:mybenchmark2})
+			
+			\subsection{Analyse}
+				Première chose que l'on remarque est que pour 50000 éléments la méthode de concaténation de string affiche un score de 0 ops/s.
+				On peut se douter que cela n'est pas normal.
+				Cela pourrait être du au fait que le nombre réel est tellement faible qu'une fois arrondi il devient 0.
+				
+				Ensuite on voit que de manière générale fusionner 50 morceaux de chaine est plus rapide que en fusionner 50000.
+				
+				Si l'on compare les méthodes testées:
+				\begin{easylist}
+					@ Sur des petites fusions (50 éléments) le StringBuilder domine largement le StringBuffer lui même largement supérieur à la concaténation simple.
+					@ Sur des grandes fusions (50000 éléments) StringBuffer et StringBuilder sont equivalents pendant que la concaténation est en PLS.
+				\end{easylist}
+				
+				Les tests ont été refaits avec une capacité initiale de 500 pour les StringBuffer et StringBuilder.
+				On remarque que sur des petites itérations, la performance du StringBuffer et StringBuilder est dégradée.
+				Cela s'explique par le fait qu'une allocation de 500 est inutile pour 50 éléments.
+				
+				En revanche pour des fusions de 50000 éléments les performances sont:
+				\begin{easylist}
+					@ Légèrement améliorées pour le StringBuilder
+					@ Très largement améliorées pour le StringBuffer
+				\end{easylist}
+				
+				De son coté la concaténation simple pleure toujours.
+				
+\appendix
+\chapter{MyBenchmark\label{sec:mybenchmark}}
+	\lstinputlisting[caption=MyBenchmark.java, language=JAVA]{jmh/src/main/java/fr/polytechtours/javaperformance/tp2/MyBenchmark.java}
+	
+\chapter{MyBenchmark\label{sec:mybenchmark2}}
+	\lstinputlisting[caption=MyBenchmark2.java, language=JAVA]{jmh/src/main/java/fr/polytechtours/javaperformance/tp2/MyBenchmark2.java}
+	
+	\lstinputlisting[caption=out2.log]{out2.log}
+	
+	\lstinputlisting[caption=out2.log avec capacité initiale]{out3.log}
 			
 \end{document}
