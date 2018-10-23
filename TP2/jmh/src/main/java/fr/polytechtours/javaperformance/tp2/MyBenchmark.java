@@ -48,15 +48,15 @@ public class MyBenchmark {
     }
 
     @Benchmark
-    @Warmup (iterations = 2, time = 8, batchSize = 3)
-    @Measurement (iterations = 2, time = 8, batchSize = 3)
+    @Warmup (iterations = 2, time = 1, batchSize = 3)
+    @Measurement (iterations = 2, time = 1, batchSize = 3)
     public void testFact(MyState state, Blackhole bh) {
         bh.consume(fact(state.i));
     }
 
     @Benchmark
-    @Warmup (iterations = 2, time = 8, batchSize = 3)
-    @Measurement (iterations = 2, time = 8, batchSize = 3)
+    @Warmup (iterations = 2, time = 1, batchSize = 3)
+    @Measurement (iterations = 2, time = 1, batchSize = 3)
     public void testFactRec(MyState state, Blackhole bh) {
         bh.consume(factRec(state.i));
     }
