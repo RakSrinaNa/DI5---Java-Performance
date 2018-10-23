@@ -34,6 +34,7 @@ package fr.polytechtours.javaperformance.tp2;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.infra.Blackhole;
 
+import java.util.Collections;
 import java.util.concurrent.TimeUnit;
 
 public class MyBenchmark {
