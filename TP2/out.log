@@ -76,6 +76,6 @@ Iteration   5: 98051650.436 ops/s
 
 
 Result "fr.polytechtours.javaperformance.tp2.MyBenchmark.fact":
-  97788715.770 ±(99.9%) 216107.541 ops/s [Average]
+  97788715.770 +-(99.9%) 216107.541 ops/s [Average]
   (min, avg, max) = (96757314.458, 97788715.770, 98099712.187), stdev = 288497.384
   CI (99.9%): [97572608.229, 98004823.311] (assumes normal distribution)
