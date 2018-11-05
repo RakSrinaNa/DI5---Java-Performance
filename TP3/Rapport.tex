@@ -1,0 +1,56 @@
+\documentclass{report}
+\usepackage{MCC}
+
+\def\footauthor{Thomas COUCHOUD \& Victor COLEAU}
+\title{Concurrent collections - TP3}
+\author{Thomas COUCHOUD\\\texttt{thomas.couchoud@etu.univ-tours.fr}\\Victor COLEAU\\\texttt{victor.coleau@etu.univ-tours.fr}}
+
+\rowcolors{1}{white}{white}
+\begin{document}
+	\mccTitle
+	
+	\chapter{Qu'est-ce que c'est ?}
+		\section{Collection}
+			En Java Collection désigne \href{https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html}{une interface}.
+			Cette dernière à pour but de désigner un groupe d'objets appelés éléments.
+			Cette définition est très générique ce qui laisse les implémentations variées.
+			Certaines peuvent être ordonnées, d'autres non; certaines avec duplicatas, d'autres non.
+			
+			Dans le JDK on ne trouve pas d'implémentation directe de cette interface, seulement des implémentations d'interfaces plus spécifiques telles que List ou Set.
+			
+			\img{diag.png}{}{}
+			
+			
+			Collection définie notamment les méthodes add(element), contains(element) et remove(element).
+			Parlons donc rapidement des 3 grandes extensions de Collection: List, Set, Queue.
+			\begin{easylist}[itemize]
+				@ List définie une collection d'objets ordonnée.
+				On peut avoir des éléments dupliqués et il y a du sens de parler de l'élément à l'indice $k$.
+				De ce fait la méthode remove(index) est aussi définie dans ce cas.
+			
+				\textbf{Exemple}: $\left[1,2,3,4,3,5,4\right]$
+				
+				@ Queue désigne une queue. Cette dernière n'est pas très différente d'une list: une collection d'éléments ordonnés.
+				Cependant on ne peux manipuler les objets qui se trouvent uniquement aux extrémités (on ajoute d'un coté, et on retire d'un autre).
+				Parler de l'élément à l'indice $k$ n'a donc aucun sens, on le verra quand il est en tête de queue.
+				
+				On retrouve les fonctions offer(element), poll et peek.
+				
+				@ Set définie une collection d'objet n'ayant pas d'ordre et pas de duplicata.
+			\end{easylist}
+			
+		\section{Concurrence}
+			\lstinputlisting[caption=Main.java, language=JAVA]{a.java}
+			
+			Si on lance le code ci-dessus, nous allons obtenir une exception java.util.ConcurrentModificationException.
+			En effet, nous avons deux threads qui tentent d'accéder à la même liste en même temps (le while et notre add ligne 11).
+			
+			Afin de pouvoir réaliser ces opérations soit on gère cela dans notre code pour être sûr qu'une seule opération est réalisée à la fois, ou bien on utilise des implémentations de collections qui gère la concurrence.
+			
+			Deux façons de procéder reposent sur Collections.synchronizedXxx() et le package java.util.concurrent.
+			
+	\chapter{Comment ça marche ?}
+		\section{Collections.synchronizedXxx()}
+		\section{java.util.concurrent}
+	\chapter{Quels sont les impacts sur les performances ?}
+\end{document}
