@@ -8,7 +8,16 @@
 \rowcolors{1}{white}{white}
 \begin{document}
 	\mccTitle
-	
+
+	\chapter{Introduction}
+		Ce TP a pour but de démystifier certains aspects de Java et de les mettre en lien avec la notion de performances.
+
+		Notre sujet porte sur les Concurrent Collections. 
+		Les collections sont des éléments antiques (JDK 1.2) de Java, importants et fréquemment utilisés.
+
+		Nous allons donc détailler plus en détail ce qu'est une Collections.
+		Puis nous introduirons la notion de concurrence au sein de celles-ci et verrons les outils disponibles afin de la prendre en comtpe.
+
 	\chapter{Qu'est-ce que c'est ?}
 		\section{Collection}
 			En Java Collection désigne \href{https://docs.oracle.com/javase/8/docs/api/java/util/Collection.html}{une interface}.
@@ -65,9 +74,9 @@
 
 			Cette solution, bien que simple à mettre en place, comprend un défaut majeur.
 			En effet, un objet "synchronisé" est un objet dont toutes les méthodes sont synchronisées.
-			Cela signifit qu'à chaque appelle d'une de ses méthodes, tout l'objet est verrouillé, même dans le cas de méthodes non-problèmatiques telles que Get (dans le cas d'une List).
+			Cela signifie qu'à chaque appelle d'une de ses méthodes, tout l'objet est verrouillé, même dans le cas de méthodes non-problèmatiques telles que Get (dans le cas d'une List).
 
-			\img{lockC.png}{}{scale=0.8}
+			\img{lockC.png}{}{0.5}
 
 			De ce fait, l'accès à l'objet est très ralenti car les processus de verrouillage et déverrouillage sont couteux en temps, ce qui provoque un effet de congestion.		
 
@@ -78,12 +87,43 @@
 
 			L'avantage de cette solution par rapport à la précédente est que celle-ci ne bloque pas tout l'objet mais utilise la technique du Lock Striping.
 
-			\img{lockB.png}{}{scale=0.8}
+			\img{lockB.png}{}{0.5}
 
-			Cette technique consiste à verrouiller une portion d'une structure de données où chaque lock verouille un ensemble d'objets indépendants (appelé Bucket).
+			Cette technique consiste à verrouiller une portion d'une structure de données où chaque lock verrouille un ensemble d'objets indépendants (appelé Bucket).
 			Dans le cas d'un ConcurrentHashMap on dispose par défaut de 16 Buckets donc de 16 locks différents.
 			Grâce à cela, jusqu'à environ 16 opérations normalement concurrentes peuvent être ici réalisées en parallèle.
+
+			A noter que les méthodes Get de chaque objet ne sont pas bloquantes.
+			Cela implique qu'elles peuvent être exécuter en même temps qu'une méthode Update (Add ou Remove).
+			Dans ce cas, le Get renverra la Collection la plus récemment mise à jour (Update fini).
 			
 
+			Dans la cas de CopyOnWriteArrayList, une autre technique de synchronisation est employée.
+			Cette dernière consiste à autoriser toutes les opérations de lectures en parallèle tandis que les opérations d'écriture sont réalisées grâce à une copie intégrale de la Collection.
+			La modification est alors effectuée sur la copie, ne génant par les lectures en cours. Dès que cela est possible, l'ancienne Collection est remplacée par la nouvelle (mise à jour).
+
 	\chapter{Quels sont les impacts sur les performances ?}
+
+		La gestion de la concurrence n'est pas optionnelle dans un programme nécessitant plusieurs Threads. En effet, si rien n'est mis en oeuvre, des exception seront levées ainsi que des états de Collections incohérents. \\
+
+		Le choix d'utilisation des objets "synchronisés" ou des méthodes du package Concurrent se fait sur la taille estimée des Collections et le nombre de Threads accédant à ces Collections.
+		
+		Dans le cas de petites instances, les objets "synchronisés" peuvent être suffisants car le faible nombre d'éléments et de demandes d'accès en parallèles réduisent l'impacts du bloquage total des objets.
+		
+		A l'inverse, dans le cas de grandes instances, le bloquage complet de la Collection ralentirait bien trop le programme. Il est donc recommandé d'utiliser les objets du package java.util.concurrent.
+		Ces derniers autorisant l'écriture et la lecture en parallèle ainsi que le bloquage partiel permettent au taux d'accès suppérieur.
+
+		De plus, certaines classes ayant des implémentations spécifiques (telle que CopyOnWriteArrayList) s'adaptent mieux à certains types de programmes en fonction de ce que l'on souhaite faire.
+
+	\chapter{Conclusion}
+		Les collections sont présentes dans Java depuis un long moment et font donc partie intégrante du développement.
+		Cependant savoir quelle implémentation utiliser est une tâche plus délicate.
+		En effet chacune à ses propres spéficités et ne sont pertinantes que dans certains cas précis.
+
+		La notion de concurrence rajoute une compléxité supplémentaire car une méthode d'accès aux données doit être implémentée.
+		Sous sa forme la plus basique (lock d'objet) les performances sont drastiquement diminuées sur des volumes importants.
+		Des alternatives plus sofistiquées sont disponibles et ont une meilleure scalabilité.
+
+		Il est donc important de garder à l'esprit que chaque problème à son implimentation qui lui correspond le mieux et qu'aucune solution n'est parfaite.
+
 \end{document}
