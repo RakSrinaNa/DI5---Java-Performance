@@ -1,5 +1,0 @@
-http://blog.paumard.org/cours/java-api/chap05-concurrent-collections.html
-
-https://www.geeksforgeeks.org/difference-traditional-collections-concurrent-collections-java/
-
-https://stackoverflow.com/questions/8203864/choosing-the-best-concurrency-list-in-java

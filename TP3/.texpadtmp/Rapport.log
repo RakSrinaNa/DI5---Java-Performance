@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.11.3)  5 NOV 2018 09:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.11.3)  5 NOV 2018 13:45
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1919,7 +1919,14 @@ File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
 )))
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
- (/Users/mrcraftcod/Dropbox/Documents/Univ/Polytech/DI5/S9/Java Performance/TP/TP3/.texpadtmp/Rapport.aux)
+ (/Users/mrcraftcod/Dropbox/Documents/Univ/Polytech/DI5/S9/Java Performance/TP/TP3/.texpadtmp/Rapport.aux
+
+LaTeX Warning: Label `fig:' multiply defined.
+
+
+LaTeX Warning: Label `fig:' multiply defined.
+
+)
 \openout1 = `Rapport.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
@@ -2183,6 +2190,716 @@ LaTeX Font Info:    Font shape `T1/futs/bx/n' in size <10> not available
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on input line 43.
  (./a.java) [2]
 Chapter 2.
+<./Images/lockC.png, id=129, 664.4825pt x 491.8375pt>
+./Rapport.tex:70: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:70: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:70: Missing number, treated as zero.
+<to be read again> 
+                   \unhbox 
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:70: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \unhbox 
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+File: ./Images/lockC.png Graphic file (type png)
+<use ./Images/lockC.png>
+Package pdftex.def Info: ./Images/lockC.png  used on input line 70.
+(pdftex.def)             Requested size: 0.0pt x 0.0pt.
+./Rapport.tex:70: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:70: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:70: Missing = inserted for \ifdim.
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./Rapport.tex:70: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:70: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:70: Missing number, treated as zero.
+<to be read again> 
+                   <
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:70: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   <
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:70: Bad register code (32233062).
+\Gscale@box ...dim #2\p@ <\z@ \ht \tw@ -#2\dp \z@ 
+                                                  \dp \tw@ -#2\ht \z@ \else ...
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A register number must be between 0 and 32767.
+I changed this one to zero.
+
+./Rapport.tex:70: Bad register code (32233062).
+\Gscale@box ...tw@ -#2\dp \z@ \dp \tw@ -#2\ht \z@ 
+                                                  \else \ht \tw@ #2\ht \z@ \...
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A register number must be between 0 and 32767.
+I changed this one to zero.
+
+./Rapport.tex:70: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:70: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:70: Missing = inserted for \ifdim.
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./Rapport.tex:70: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:70: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:70: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:70: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:70: Missing number, treated as zero.
+<to be read again> 
+                   <
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:70: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   <
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:70: Missing number, treated as zero.
+<to be read again> 
+                   \hbox 
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:70: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \hbox 
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:70: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:70: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:70: Missing { inserted.
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A left brace was mandatory here, so I've put one in.
+You might want to delete and/or insert some corrections
+so that I will find a matching right brace soon.
+(If you're confused by all this, try typing `I}' now.)
+
+./Rapport.tex:70: Missing number, treated as zero.
+<to be read again> 
+                   {
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:70: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   {
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:70: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:70: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:70: Missing number, treated as zero.
+<to be read again> 
+                   \box 
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:70: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \box 
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:70: Missing } inserted.
+<inserted text> 
+                }
+l.70 			\img{lockC.png}{}{scale=0.8}
+                                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 70.
+See the caption package documentation for explanation.
+
+<./Images/lockB.png, id=130, 633.36626pt x 473.77pt>
+./Rapport.tex:81: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:81: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:81: Missing number, treated as zero.
+<to be read again> 
+                   \unhbox 
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:81: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \unhbox 
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+File: ./Images/lockB.png Graphic file (type png)
+<use ./Images/lockB.png>
+Package pdftex.def Info: ./Images/lockB.png  used on input line 81.
+(pdftex.def)             Requested size: 0.0pt x 0.0pt.
+./Rapport.tex:81: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:81: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:81: Missing = inserted for \ifdim.
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./Rapport.tex:81: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:81: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:81: Missing number, treated as zero.
+<to be read again> 
+                   <
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:81: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   <
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:81: Bad register code (31048991).
+\Gscale@box ...dim #2\p@ <\z@ \ht \tw@ -#2\dp \z@ 
+                                                  \dp \tw@ -#2\ht \z@ \else ...
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A register number must be between 0 and 32767.
+I changed this one to zero.
+
+./Rapport.tex:81: Bad register code (31048991).
+\Gscale@box ...tw@ -#2\dp \z@ \dp \tw@ -#2\ht \z@ 
+                                                  \else \ht \tw@ #2\ht \z@ \...
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A register number must be between 0 and 32767.
+I changed this one to zero.
+
+./Rapport.tex:81: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:81: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:81: Missing = inserted for \ifdim.
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+I was expecting to see `<', `=', or `>'. Didn't.
+
+./Rapport.tex:81: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:81: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:81: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:81: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:81: Missing number, treated as zero.
+<to be read again> 
+                   <
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:81: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   <
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:81: Missing number, treated as zero.
+<to be read again> 
+                   \hbox 
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:81: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \hbox 
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:81: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:81: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:81: Missing { inserted.
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A left brace was mandatory here, so I've put one in.
+You might want to delete and/or insert some corrections
+so that I will find a matching right brace soon.
+(If you're confused by all this, try typing `I}' now.)
+
+./Rapport.tex:81: Missing number, treated as zero.
+<to be read again> 
+                   {
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:81: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   {
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:81: Missing number, treated as zero.
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:81: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   s
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:81: Missing number, treated as zero.
+<to be read again> 
+                   \box 
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+A number should have been here; I inserted `0'.
+(If you can't figure out why I needed to see a number,
+look up `weird error' in the index to The TeXbook.)
+
+./Rapport.tex:81: Illegal unit of measure (pt inserted).
+<to be read again> 
+                   \box 
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+Dimensions can be in units of em, ex, in, pt, pc,
+cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
+I'll assume that you meant to say pt, for printer's points.
+To recover gracefully from this error, it's best to
+delete the erroneous units; e.g., type `2' to delete
+two letters. (See Chapter 27 of The TeXbook.)
+
+./Rapport.tex:81: Missing } inserted.
+<inserted text> 
+                }
+l.81 			\img{lockB.png}{}{scale=0.8}
+                                    
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+
+Package caption Warning: The option `hypcap=true' will be ignored for this
+(caption)                particular \caption on input line 81.
+See the caption package documentation for explanation.
+
 [3
 
 ]
@@ -2197,27 +2914,31 @@ AED: lastpage setting LastPage
 [4
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 56.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 56.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 89.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 89.
  (/Users/mrcraftcod/Dropbox/Documents/Univ/Polytech/DI5/S9/Java Performance/TP/TP3/.texpadtmp/Rapport.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 56.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 56.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 89.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 89.
 Package rerunfilecheck Info: File `Rapport.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 55566 strings out of 492639
- 1106731 string characters out of 6129302
+ 55581 strings out of 492639
+ 1106988 string characters out of 6129302
  1534010 words of memory out of 5000000
- 58369 multiletter control sequences out of 15000+600000
- 612218 words of font info for 100 fonts, out of 8000000 for 9000
+ 58378 multiletter control sequences out of 15000+600000
+ 616335 words of font info for 102 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,11n,107p,2010b,1315s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2018/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmtt9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb>
-Output written on "/Users/mrcraftcod/Dropbox/Documents/Univ/Polytech/DI5/S9/Java Performance/TP/TP3/.texpadtmp/Rapport.pdf" (5 pages, 150533 bytes).
+Output written on "/Users/mrcraftcod/Dropbox/Documents/Univ/Polytech/DI5/S9/Java Performance/TP/TP3/.texpadtmp/Rapport.pdf" (5 pages, 155542 bytes).
 PDF statistics:
- 174 PDF objects out of 1000 (max. 8388607)
- 131 compressed objects within 2 object streams
- 43 named destinations out of 1000 (max. 500000)
- 223 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 178 PDF objects out of 1000 (max. 8388607)
+ 133 compressed objects within 2 object streams
+ 45 named destinations out of 1000 (max. 500000)
+ 233 words of extra memory for PDF output out of 10000 (max. 10000000)
 
