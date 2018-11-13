@@ -17,9 +17,21 @@
 		
 		Après des mini benchmarks nous obtenons la sortie suivante:
 		\lstinputlisting[caption=benchmark.txt]{jmh/exo1_Bench.txt}
-
 		
+		Avec nos améliorations on peut constater que le score est multiplié par environ 5.
+		Cela est probablement du aux changement des types plus qu'à la transformation des incrémentations.
+
 	\chapter{Exercice 2}
+		La première remarque est que dans le calcul d'une valeur de fibonacci, le calcul des deux précédentes est nécessaire.
+		Or dans l'implémentation donné fibonacci(i-1) et fibonacci(i-2) sont indépendantes alors que fibonacci(i-1) utilise et donc recalcule lui-même fibonacci(i-2).
+		Ce dernier calcul est donc effectué au moins 2 fois, ce qui est inutule et peut être très long sur des grandes valeurs.
+		
+		Nous allons donc mettre en place un système de cache des valeurs au travers d'une map.
+		
+		\lstinputlisting[caption=benchmark.txt]{jmh/exo2_Bench.txt}
+		
+		L'amélioration est ici flagrante.
+		
 	
 	\chapter{Exercice 3}
 		\section{Exercice 3a}
