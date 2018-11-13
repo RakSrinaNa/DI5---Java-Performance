@@ -1,0 +1,34 @@
+\documentclass{report}
+\usepackage{MCC}
+
+\def\footauthor{Thomas COUCHOUD \& Victor COLEAU}
+\title{Java Performance - TP4}
+\author{Thomas COUCHOUD\\\texttt{thomas.couchoud@etu.univ-tours.fr}\\Victor COLEAU\\\texttt{victor.coleau@etu.univ-tours.fr}}
+
+\begin{document}
+	\mccTitle
+	
+	\chapter{Introduction}
+	
+	\chapter{Exercice 1}
+		On remarque que beaucoup de types utilisés des classes (Float, Integer, ...), il serait donc peut-être plus efficace d'utiliser des types primitifs directement afin d'éviter d'inutiles opérations d'unboxing/boxing.
+		
+		De plus nous avons changé les "k = k + 1" en "k++".
+		
+		Après des mini benchmarks nous obtenons la sortie suivante:
+		\lstinputlisting[caption=benchmark.txt]{jmh/exo1_Bench.txt}
+
+		
+	\chapter{Exercice 2}
+	
+	\chapter{Exercice 3}
+		\section{Exercice 3a}
+		
+		\section{Exercice 3b}
+
+	\chapter{Exercice 4}
+	
+	\chapter{Exercice 5}
+	
+	\chapter{Conclusion}
+\end{document}
