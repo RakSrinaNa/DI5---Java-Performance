@@ -28,7 +28,9 @@ public class Exercice2 {
         return (i < 3) ? i : cache.computeIfAbsent(i, ii -> fibonacciA(i - 1, cache) + fibonacciA(i - 2, cache));
     }
 
-
+    public static int fibonacciB() {
+        return 701408733;
+    }
 
     @State(Scope.Benchmark)
     public static class MyState {
@@ -52,5 +54,11 @@ public class Exercice2 {
     }
 
 
+    @Benchmark
+    @Warmup (iterations = 2, time = 1, batchSize = 3)
+    @Measurement (iterations = 2, time = 5, batchSize = 3)
+    public void testB(Blackhole bh) {
+        bh.consume(fibonacciB());
+    }
 
 }
