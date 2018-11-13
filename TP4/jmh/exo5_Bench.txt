@@ -1,0 +1,7 @@
+Benchmark            (i)   Mode  Cnt         Score          Error  Units
+Exercice5.test    Thomas  thrpt   10   1257489.509 +=   68643.635  ops/s
+Exercice5.test   Clement  thrpt   10   1261393.467 +=   55132.028  ops/s
+Exercice5.test     Louis  thrpt   10   1220180.478 +=  185204.978  ops/s
+Exercice5.testA   Thomas  thrpt   10  57787733.041 +=  329682.747  ops/s
+Exercice5.testA  Clement  thrpt   10  57331680.503 += 1011760.686  ops/s
+Exercice5.testA    Louis  thrpt   10  57808907.426 +=  332110.507  ops/s
