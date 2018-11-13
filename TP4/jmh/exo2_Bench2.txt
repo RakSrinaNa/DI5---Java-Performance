@@ -1,3 +1,4 @@
 Benchmark        (i)   Mode  Cnt         Score          Error  Units
-Exercice2.test    43  thrpt   10           ≈ 0                ops/s
-Exercice2.testA   43  thrpt   10  23459059.162 += 1869717.291  ops/s
+Exercice2.test    43  thrpt   10           ~= 0                ops/s
+Exercice2.testA   43  thrpt   10  24448866.918 += 2929078.246  ops/s
+Exercice2.testB  N/A  thrpt   10  73504959.848 +=  747624.575  ops/s
