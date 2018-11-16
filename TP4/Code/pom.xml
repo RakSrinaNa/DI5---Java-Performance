@@ -63,6 +63,11 @@ THE POSSIBILITY OF SUCH DAMAGE.
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>LATEST</version>
+        </dependency>
     </dependencies>
 
     <properties>
