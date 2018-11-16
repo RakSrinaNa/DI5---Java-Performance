@@ -37,9 +37,30 @@
 		
 	
 	\section{Exercice 3}
+		Dans les deux exercices suivants, nous n'avons pas pu comparer avec les méthodes de base car ces dernières font crasher la VM.
+		Nous pouvons cependant déduire les potentielles améliorations grâce au temps d'exécutions des tests unitaires.
+		En effet les méthodes de bases durent environ 1m30 alors que les versions améliorées sont aux alentours de 30s (pour 3a) et 1m (pour 3b).
+	
 		\subsection{Exercice 3a}
+			Dans une première méthode "A" nous avons:
+			\begin{easylist}
+				@ Retiré le synchronized de la méthode. En effet on a déjà un mutex à l'intérieur de la fonction et il n'est donc pas nécessaire d'en avoir deux. De plus le synchronized sur la méthode bloque toutes les autres méthodes synchronized ce qui n'est pas optimal.
+				@ Changé les Integer en int afin d'éviter les boxing/unboxing inutiles.
+				@ Ajout direct du future dans la liste au lieux de la création d'un objet intermédiaire.
+			\end{easylist}
+			
+			Une deuxième méthode "B" reprend les modifications de la méthode "A" mais utilise cette fois-ci un AtomicInteger afin de remplacer le mutex dans la fonction d'incrémentation.
+			
+			Les résultats sont les suivants:
+			\lstinputlisting[caption=benchmark.txt]{jmh/exo3a_Bench.txt}
 		
 		\subsection{Exercice 3b}
+			Nous avons ici repris les mêmes idées que dans l'exercice 3a cependant nous avons du changer le incrementAndGet du AtomicInteger en accumulateAndGet afin d'y ajouter le calcul du modulo.
+			
+			Les résultats sont les suivants:
+			\lstinputlisting[caption=benchmark.txt]{jmh/exo3b_Bench.txt}
+			
+			
 
 	\section{Exercice 4}
 		La première chose que nous remarquons est que l'on fait une boucle for pour ajouter tous les éléments d'un tableau.
