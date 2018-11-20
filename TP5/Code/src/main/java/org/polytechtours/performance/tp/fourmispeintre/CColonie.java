@@ -9,39 +9,37 @@ package org.polytechtours.performance.tp.fourmispeintre;
  * the Source Creation and Management node. Right-click the template and choose
  * Open. You can then make changes to the template in the Source Editor.
  */
-import java.util.Vector;
+
+import java.util.List;
 
 public class CColonie implements Runnable {
 
-  private Boolean mContinue = Boolean.TRUE;
-  private Vector<CFourmi> mColonie;
-  private PaintingAnts mApplis;
+    private boolean mContinue = true;
+    private List<CFourmi> mColonie;
+    private PaintingAnts mApplis;
 
-  /** Creates a new instance of CColonie */
-  public CColonie(Vector<CFourmi> pColonie, PaintingAnts pApplis) {
-    mColonie = pColonie;
-    mApplis = pApplis;
-  }
-
-  public void pleaseStop() {
-    mContinue = false;
-  }
-
-  @Override
-  public void run() {
-
-    while (mContinue == true) {
-      if (!mApplis.getPause()) {
-        for (int i = 0; i < mColonie.size(); i++) {
-          mColonie.get(i).deplacer();
-        }
-      } else {
-        /*
-         * try { Thread.sleep(100); } catch (InterruptedException e) { break; }
-         */
-
-      }
+    /**
+     * Creates a new instance of CColonie
+     */
+    public CColonie(List<CFourmi> pColonie, PaintingAnts pApplis) {
+        mColonie = pColonie;
+        mApplis = pApplis;
     }
-  }
+
+    public void pleaseStop() {
+        mContinue = false;
+    }
+
+    @Override
+    public void run() {
+
+        while (mContinue) {
+            if (!mApplis.getPause()) {
+                for (CFourmi f : mColonie) {
+                    f.deplacer();
+                }
+            }
+        }
+    }
 
 }
