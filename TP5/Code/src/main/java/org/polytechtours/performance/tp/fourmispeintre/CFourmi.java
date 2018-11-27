@@ -22,7 +22,7 @@ public class CFourmi {
     // le generateur aléatoire (Random est thread safe donc on la partage)
     private static Random GenerateurAleatoire = new Random();
     // couleur déposé par la fourmi
-    private Color mCouleurDeposee;
+    private int[] mCouleurDeposee;
     private float mLuminanceCouleurSuivie;
     // objet graphique sur lequel les fourmis peuvent peindre
     private CPainting mPainting;
@@ -46,13 +46,13 @@ public class CFourmi {
 
     /*************************************************************************************************
      */
-    public CFourmi(Color pCouleurDeposee, Color pCouleurSuivie, float pProbaTD, float pProbaG, float pProbaD,
+    public CFourmi(int[] pCouleurDeposee, int[] pCouleurSuivie, float pProbaTD, float pProbaG, float pProbaD,
                    float pProbaSuivre, CPainting pPainting, char pTypeDeplacement, int pInit_x, int pInit_y, int pInitDirection,
                    int pTaille, float pSeuilLuminance, PaintingAnts pApplis) {
 
         mCouleurDeposee = pCouleurDeposee;
-        mLuminanceCouleurSuivie = 0.2426f * pCouleurSuivie.getRed() + 0.7152f * pCouleurSuivie.getGreen()
-                + 0.0722f * pCouleurSuivie.getBlue();
+        mLuminanceCouleurSuivie = 0.2426f * pCouleurSuivie[0] + 0.7152f * pCouleurSuivie[1]
+                + 0.0722f * pCouleurSuivie[2];
         mPainting = pPainting;
         mApplis = pApplis;
 
@@ -107,7 +107,7 @@ public class CFourmi {
         if (mApplis.mBaseImage != null) {
             lCouleur = new Color(mApplis.mBaseImage.getRGB(i, j));
         } else {
-            lCouleur = new Color(mPainting.getCouleur(i, j).getRGB());
+            lCouleur = new Color(mPainting.getCouleurRGB(i, j));
         }
         if (testCouleur(lCouleur)) {
             dir[0] = 1;
@@ -118,7 +118,7 @@ public class CFourmi {
         if (mApplis.mBaseImage != null) {
             lCouleur = new Color(mApplis.mBaseImage.getRGB(i, j));
         } else {
-            lCouleur = new Color(mPainting.getCouleur(i, j).getRGB());
+            lCouleur = new Color(mPainting.getCouleurRGB(i, j));
         }
         if (testCouleur(lCouleur)) {
             dir[1] = 1;
@@ -128,7 +128,7 @@ public class CFourmi {
         if (mApplis.mBaseImage != null) {
             lCouleur = new Color(mApplis.mBaseImage.getRGB(i, j));
         } else {
-            lCouleur = new Color(mPainting.getCouleur(i, j).getRGB());
+            lCouleur = new Color(mPainting.getCouleurRGB(i, j));
         }
         if (testCouleur(lCouleur)) {
             dir[2] = 1;
