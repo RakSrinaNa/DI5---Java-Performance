@@ -105,9 +105,9 @@ public class CFourmi {
         i = modulo(x + CFourmi.mIncDirection[modulo(mDirection - mDecalDir, 8)][0], mPainting.getLargeur());
         j = modulo(y + CFourmi.mIncDirection[modulo(mDirection - mDecalDir, 8)][1], mPainting.getHauteur());
         if (mApplis.mBaseImage != null) {
-            lCouleur = new Color(mApplis.mBaseImage.getRGB(i, j));
+            lCouleur = MyColor.getColor(mApplis.mBaseImage.getRGB(i, j));
         } else {
-            lCouleur = new Color(mPainting.getCouleur(i, j).getRGB());
+            lCouleur = MyColor.getColor(mPainting.getCouleur(i, j).getRGB());
         }
         if (testCouleur(lCouleur)) {
             dir[0] = 1;
@@ -116,9 +116,9 @@ public class CFourmi {
         i = modulo(x + CFourmi.mIncDirection[mDirection][0], mPainting.getLargeur());
         j = modulo(y + CFourmi.mIncDirection[mDirection][1], mPainting.getHauteur());
         if (mApplis.mBaseImage != null) {
-            lCouleur = new Color(mApplis.mBaseImage.getRGB(i, j));
+            lCouleur = MyColor.getColor(mApplis.mBaseImage.getRGB(i, j));
         } else {
-            lCouleur = new Color(mPainting.getCouleur(i, j).getRGB());
+            lCouleur = MyColor.getColor(mPainting.getCouleur(i, j).getRGB());
         }
         if (testCouleur(lCouleur)) {
             dir[1] = 1;
@@ -126,9 +126,9 @@ public class CFourmi {
         i = modulo(x + CFourmi.mIncDirection[modulo(mDirection + mDecalDir, 8)][0], mPainting.getLargeur());
         j = modulo(y + CFourmi.mIncDirection[modulo(mDirection + mDecalDir, 8)][1], mPainting.getHauteur());
         if (mApplis.mBaseImage != null) {
-            lCouleur = new Color(mApplis.mBaseImage.getRGB(i, j));
+            lCouleur = MyColor.getColor(mApplis.mBaseImage.getRGB(i, j));
         } else {
-            lCouleur = new Color(mPainting.getCouleur(i, j).getRGB());
+            lCouleur = MyColor.getColor(mPainting.getCouleur(i, j).getRGB());
         }
         if (testCouleur(lCouleur)) {
             dir[2] = 1;
