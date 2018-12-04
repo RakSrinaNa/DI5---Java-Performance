@@ -69,6 +69,7 @@ public class CPainting extends Canvas implements MouseListener {
     private PaintingAnts mApplis;
 
     private boolean mSuspendu = false;
+    private Graphics mG;
 
     /******************************************************************************
      * Titre : public CPainting() Description : Constructeur de la classe
@@ -142,7 +143,8 @@ public class CPainting extends Canvas implements MouseListener {
     public void reset() {
         int i, j;
         synchronized (mMutexCouleurs) {
-            this.getGraphics().clearRect(0, 0, mDimension.width, mDimension.height);
+            mG = getGraphics();
+            mG.clearRect(0, 0, mDimension.width, mDimension.height);
 
             // initialisation de la matrice des couleurs
 
@@ -193,15 +195,12 @@ public class CPainting extends Canvas implements MouseListener {
      ******************************************************************************/
     @Override
     public void paint(Graphics pGraphics) {
-
-        this.getGraphics().setColor(Color.RED);
-        this.getGraphics().fillRect(100, 0, 50, 50);
-//        for (int i = 0; i < mDimension.width; i++) {
-//            for (int j = 0; j < mDimension.height; j++) {
-//                pGraphics.setColor(new Color(getCouleurRGB(i, j)));
-//                pGraphics.fillRect(i, j, 1, 1);
-//            }
-//        }
+        for (int i = 0; i < mDimension.width; i++) {
+            for (int j = 0; j < mDimension.height; j++) {
+                pGraphics.setColor(new Color(getCouleurRGB(i, j)));
+                pGraphics.fillRect(i, j, 1, 1);
+            }
+        }
     }
 
     /******************************************************************************
@@ -218,8 +217,8 @@ public class CPainting extends Canvas implements MouseListener {
             }
 
             // on colorie la case sur laquelle se trouve la fourmi
-            this.getGraphics().setColor(new Color(c[0], c[1], c[2]));
-            this.getGraphics().fillRect(x, y, 1, 1);
+            mG.setColor(new Color(c[0], c[1], c[2]));
+            mG.fillRect(x, y, 1, 1);
 
             // on fait diffuser la couleur :
             switch (pTaille) {
@@ -262,13 +261,13 @@ public class CPainting extends Canvas implements MouseListener {
                 mCouleurs[m][n][1] = (int) (G/factor);
                 mCouleurs[m][n][2] = (int) (B/factor);
                 if (!mSuspendu) {
-                    this.getGraphics().setColor(new Color(getCouleurRGB(m,n)));
-                    this.getGraphics().fillRect(m, n, 1, 1);
+                    mG.setColor(new Color(getCouleurRGB(m,n)));
+                    mG.fillRect(m, n, 1, 1);
                 }
             }
         }
-        this.getGraphics().setColor(Color.RED);
-        this.getGraphics().fillRect(0, 0, 100, 100);
+        mG.setColor(Color.RED);
+        mG.fillRect(0, 0, 100, 100);
     }
 
     public void suspendre() {
