@@ -22,7 +22,7 @@ public class CFourmi {
     // le generateur aléatoire (Random est thread safe donc on la partage)
     private static Random GenerateurAleatoire = new Random();
     // couleur déposé par la fourmi
-    private int[] mCouleurDeposee;
+    private int mCouleurDeposee;
     private float mLuminanceCouleurSuivie;
     // objet graphique sur lequel les fourmis peuvent peindre
     private CPainting mPainting;
@@ -46,13 +46,13 @@ public class CFourmi {
 
     /*************************************************************************************************
      */
-    public CFourmi(int[] pCouleurDeposee, int[] pCouleurSuivie, float pProbaTD, float pProbaG, float pProbaD,
+    public CFourmi(Color pCouleurDeposee, Color pCouleurSuivie, float pProbaTD, float pProbaG, float pProbaD,
                    float pProbaSuivre, CPainting pPainting, char pTypeDeplacement, int pInit_x, int pInit_y, int pInitDirection,
                    int pTaille, float pSeuilLuminance, PaintingAnts pApplis) {
 
-        mCouleurDeposee = pCouleurDeposee;
-        mLuminanceCouleurSuivie = 0.2426f * pCouleurSuivie[0] + 0.7152f * pCouleurSuivie[1]
-                + 0.0722f * pCouleurSuivie[2];
+        mCouleurDeposee = pCouleurDeposee.getRGB();
+        mLuminanceCouleurSuivie = 0.2426f * pCouleurSuivie.getRed() + 0.7152f * pCouleurSuivie.getGreen()
+                + 0.0722f * pCouleurSuivie.getBlue();
         mPainting = pPainting;
         mApplis = pApplis;
 

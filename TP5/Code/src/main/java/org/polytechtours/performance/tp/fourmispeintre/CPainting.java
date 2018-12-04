@@ -4,6 +4,8 @@ package org.polytechtours.performance.tp.fourmispeintre;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 
 // version : 2.0
 
@@ -60,7 +62,7 @@ public class CPainting extends Canvas implements MouseListener {
     // tableau des couleurs, il permert de conserver en memoire l'état de chaque
     // pixel du canvas, ce qui est necessaire au deplacemet des fourmi
     // il sert aussi pour la fonction paint du Canvas
-    private int[][][] mCouleurs;
+    private BufferedImage img;
     // couleur du fond
     private Color mCouleurFond = new Color(255, 255, 255);
     // dimensions
@@ -69,7 +71,7 @@ public class CPainting extends Canvas implements MouseListener {
     private PaintingAnts mApplis;
 
     private boolean mSuspendu = false;
-    private Graphics mG;
+//    private Graphics mG;
 
     /******************************************************************************
      * Titre : public CPainting() Description : Constructeur de la classe
@@ -86,29 +88,15 @@ public class CPainting extends Canvas implements MouseListener {
         this.setBackground(mCouleurFond);
 
         // initialisation de la matrice des couleurs
-        mCouleurs = new int[mDimension.width][mDimension.height][3];
-        for (i = 0; i != mDimension.width; i++) {
-            for (j = 0; j != mDimension.height; j++) {
-                mCouleurs[i][j][0] = mCouleurFond.getRed();
-                mCouleurs[i][j][1] = mCouleurFond.getGreen();
-                mCouleurs[i][j][2] = mCouleurFond.getBlue();
-            }
-        }
+        img = new BufferedImage(mDimension.width, mDimension.height, BufferedImage.TYPE_INT_RGB);
+        img.getGraphics().setColor(mCouleurFond);
+        img.getGraphics().fillRect(0, 0, mDimension.width, mDimension.height);
     }
 
-    /******************************************************************************
-     * Titre : Color getCouleur Description : Cette fonction renvoie la couleur
-     * d'une case
-     ******************************************************************************/
-    public int[] getCouleur(int x, int y) {
-        synchronized (mMutexCouleurs) {
-            return mCouleurs[x][y];
-        }
-    }
 
     public int getCouleurRGB(int x, int y) {
         synchronized (mMutexCouleurs) {
-            return 0xFF000000 | mCouleurs[x][y][0] << 16 | mCouleurs[x][y][1] << 8 | mCouleurs[x][y][2];
+            return img.getRGB(x, y);
         }
     }
 
@@ -143,16 +131,14 @@ public class CPainting extends Canvas implements MouseListener {
     public void reset() {
         int i, j;
         synchronized (mMutexCouleurs) {
-            mG = getGraphics();
-            mG.clearRect(0, 0, mDimension.width, mDimension.height);
+//            mG = getGraphics();
+//            mG.clearRect(0, 0, mDimension.width, mDimension.height);
 
             // initialisation de la matrice des couleurs
 
             for (i = 0; i != mDimension.width; i++) {
                 for (j = 0; j != mDimension.height; j++) {
-                    mCouleurs[i][j][0] = mCouleurFond.getRed();
-                    mCouleurs[i][j][1] = mCouleurFond.getGreen();
-                    mCouleurs[i][j][2] = mCouleurFond.getBlue();
+                    img.setRGB(i, j, mCouleurFond.getRGB());
                 }
             }
         }
@@ -195,12 +181,14 @@ public class CPainting extends Canvas implements MouseListener {
      ******************************************************************************/
     @Override
     public void paint(Graphics pGraphics) {
-        for (int i = 0; i < mDimension.width; i++) {
-            for (int j = 0; j < mDimension.height; j++) {
-                pGraphics.setColor(new Color(getCouleurRGB(i, j)));
-                pGraphics.fillRect(i, j, 1, 1);
-            }
-        }
+//        for (int i = 0; i < mDimension.width; i++) {
+//            for (int j = 0; j < mDimension.height; j++) {
+//                pGraphics.setColor(new Color(getCouleurRGB(i, j)));
+//                pGraphics.fillRect(i, j, 1, 1);
+//            }
+//        }
+
+        pGraphics.drawImage(img, 0, 0, null);
     }
 
     /******************************************************************************
@@ -208,17 +196,15 @@ public class CPainting extends Canvas implements MouseListener {
      * fonction va colorer le pixel correspondant et mettre a jour le tabmleau des
      * couleurs
      ******************************************************************************/
-    public void setCouleur(int x, int y, int[] c, int pTaille) {
+    public void setCouleur(int x, int y, int c, int pTaille) {
         if (!mSuspendu) {
             synchronized (mMutexCouleurs) {
-                mCouleurs[x][y][0] = c[0];
-                mCouleurs[x][y][1] = c[1];
-                mCouleurs[x][y][2] = c[2];
+                img.setRGB(x,y,c);
             }
 
             // on colorie la case sur laquelle se trouve la fourmi
-            mG.setColor(new Color(c[0], c[1], c[2]));
-            mG.fillRect(x, y, 1, 1);
+//            getGraphics().setColor(new Color(c));
+//            getGraphics().fillRect(x, y, 1, 1);
 
             // on fait diffuser la couleur :
             switch (pTaille) {
@@ -248,26 +234,24 @@ public class CPainting extends Canvas implements MouseListener {
                     for (int l = 0; l < matrix[i].length; l++) {
                         int m = (x + i + k - matrix.length + 1 + mDimension.width) % mDimension.width;
                         int n = (y + j + l - matrix[i].length + 1 + mDimension.height) % mDimension.height;
-                        R += matrix[k][l] * mCouleurs[m][n][0];
-                        G += matrix[k][l] * mCouleurs[m][n][1];
-                        B += matrix[k][l] * mCouleurs[m][n][2];
+                        int c = img.getRGB(m, n);
+                        R += matrix[k][l] * ((c & 0x00FF0000) >>> 16);
+                        G += matrix[k][l] * ((c & 0x0000FF00) >>> 8);
+                        B += matrix[k][l] * (c & 0x000000FF);
                     }
                 }
 
-
                 int m = (x + i - matrix.length / 2 + mDimension.width) % mDimension.width;
                 int n = (y + j - matrix[i].length / 2 + mDimension.height) % mDimension.height;
-                mCouleurs[m][n][0] = (int) (R/factor);
-                mCouleurs[m][n][1] = (int) (G/factor);
-                mCouleurs[m][n][2] = (int) (B/factor);
+                img.setRGB(m, n,  0xFF000000 | ((int)(R / factor)) << 16 | ((int)(G / factor)) << 8 | ((int)(B / factor)));
                 if (!mSuspendu) {
-                    mG.setColor(new Color(getCouleurRGB(m,n)));
-                    mG.fillRect(m, n, 1, 1);
+//                    img.getGraphics().setColor(new Color(getCouleurRGB(m,n)));
+//                    img.getGraphics().fillRect(m, n, 1, 1);
                 }
             }
         }
-        mG.setColor(Color.RED);
-        mG.fillRect(0, 0, 100, 100);
+//        mG.setColor(Color.RED);
+//        mG.fillRect(0, 0, 100, 100);
     }
 
     public void suspendre() {
