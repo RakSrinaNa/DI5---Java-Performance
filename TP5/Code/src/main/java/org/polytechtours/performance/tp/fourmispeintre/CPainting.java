@@ -5,6 +5,8 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
+import java.awt.image.DataBuffer;
+import java.awt.image.DataBufferInt;
 import java.awt.image.ImageObserver;
 
 // version : 2.0
@@ -187,8 +189,13 @@ public class CPainting extends Canvas implements MouseListener {
 //                pGraphics.fillRect(i, j, 1, 1);
 //            }
 //        }
+        DataBufferInt a  = (DataBufferInt) img.getRaster().getDataBuffer();
+         for (int i = 0; i < a.getSize(); i++) {
+                pGraphics.setColor(new Color(a.getElem(i)));
+                pGraphics.fillRect(i % mDimension.width, i / mDimension.width, 1, 1);
+        }
 
-        pGraphics.drawImage(img, 0, 0, null);
+//        pGraphics.drawImage(img, 0, 0, null);
     }
 
     /******************************************************************************
