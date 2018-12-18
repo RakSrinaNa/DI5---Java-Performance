@@ -188,8 +188,11 @@ public class CPainting extends Canvas implements MouseListener {
 
     @Override
     public void update(Graphics g) {
-        paint(img.getGraphics());
-        g.drawImage(img, 0, 0, this);
+        if(!mSuspendu)
+        {
+            paint(img.getGraphics());
+            g.drawImage(img, 0, 0, this);
+        }
     }
 
     /******************************************************************************
@@ -198,7 +201,6 @@ public class CPainting extends Canvas implements MouseListener {
      * couleurs
      ******************************************************************************/
     public void setCouleur(int x, int y, int c, int pTaille) {
-        if (!mSuspendu) {
             synchronized (mMutexCouleurs) {
                 img.setRGB(x,y,c);
             }
@@ -211,18 +213,20 @@ public class CPainting extends Canvas implements MouseListener {
             switch (pTaille) {
                 case 1:
                     convol(mMatriceConv9, mMatriceFactor9, x, y);
-                    this.repaint(x - mMatriceConv9.length / 2, y - mMatriceConv9.length / 2, mMatriceConv9.length, mMatriceConv9.length);
+//                    this.repaint(x - mMatriceConv9.length / 2, y - mMatriceConv9.length / 2, mMatriceConv9.length, mMatriceConv9.length);
+                    this.repaint();
                     break;
                 case 2:
                     convol(mMatriceConv25, mMatriceFactor25, x, y);
-                    this.repaint(x - mMatriceConv25.length / 2, y - mMatriceConv25.length / 2, mMatriceConv25.length, mMatriceConv25.length);
+//                    this.repaint(x - mMatriceConv25.length / 2, y - mMatriceConv25.length / 2, mMatriceConv25.length, mMatriceConv25.length);
+                    this.repaint();
                     break;
                 case 3:
                     convol(mMatriceConv49, mMatriceFactor49, x, y);
-                    this.repaint(x - mMatriceConv49.length / 2, y - mMatriceConv49.length / 2, mMatriceConv49.length, mMatriceConv49.length);
+//                    this.repaint(x - mMatriceConv49.length / 2, y - mMatriceConv49.length / 2, mMatriceConv49.length, mMatriceConv49.length);
+                    this.repaint();
                     break;
             }// end switch
-        }
     }
 
     /******************************************************************************
@@ -248,10 +252,10 @@ public class CPainting extends Canvas implements MouseListener {
                 int m = (x + i - matrix.length / 2 + mDimension.width) % mDimension.width;
                 int n = (y + j - matrix[i].length / 2 + mDimension.height) % mDimension.height;
                 img.setRGB(m, n,  0xFF000000 | ((int)(R / factor)) << 16 | ((int)(G / factor)) << 8 | ((int)(B / factor)));
-                if (!mSuspendu) {
+//                if (!mSuspendu) {
 //                    img.getGraphics().setColor(new Color(getCouleurRGB(m,n)));
 //                    img.getGraphics().fillRect(m, n, 1, 1);
-                }
+//                }
             }
         }
 //        mG.setColor(Color.RED);
@@ -260,8 +264,5 @@ public class CPainting extends Canvas implements MouseListener {
 
     public void suspendre() {
         mSuspendu = !mSuspendu;
-        if (!mSuspendu) {
-            this.repaint();
-        }
     }
 }
