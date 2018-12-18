@@ -153,6 +153,7 @@ public class CPainting extends Canvas implements MouseListener {
         pMouseEvent.consume();
         if (pMouseEvent.getButton() == MouseEvent.BUTTON1) {
             mApplis.pause();
+            suspendre();
         } else if (pMouseEvent.getButton() == MouseEvent.BUTTON2) {
             suspendre();
         } else {
@@ -260,7 +261,7 @@ public class CPainting extends Canvas implements MouseListener {
     public void suspendre() {
         mSuspendu = !mSuspendu;
         if (!mSuspendu) {
-            repaint();
+            this.repaint();
         }
     }
 }

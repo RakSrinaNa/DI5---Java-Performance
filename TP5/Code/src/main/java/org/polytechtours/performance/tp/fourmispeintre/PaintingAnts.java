@@ -10,7 +10,6 @@ import java.util.StringTokenizer;
 
 public class PaintingAnts extends java.applet.Applet implements Runnable {
     private static final long serialVersionUID = 1L;
-    public BufferedImage mBaseImage;
     // l'objet graphique lui meme
     private CPainting mPainting;
     // les fourmis
@@ -82,20 +81,6 @@ public class PaintingAnts extends java.applet.Applet implements Runnable {
         mPainting = new CPainting(mDimension, this);
         add(mPainting);
 
-        // lecture de l'image
-        lFileName = urlLoader.findResource("images/" + getParameter("Img"));
-        try {
-            if (lFileName != null) {
-                mBaseImage = javax.imageio.ImageIO.read(lFileName);
-            }
-        } catch (java.io.IOException ex) {
-        }
-
-        if (mBaseImage != null) {
-            mDimension.setSize(mBaseImage.getWidth(), mBaseImage.getHeight());
-            resize(mDimension);
-        }
-
         readParameterFourmis();
 
         setLayout(null);
@@ -109,10 +94,6 @@ public class PaintingAnts extends java.applet.Applet implements Runnable {
      */
     @Override
     public void paint(Graphics g) {
-
-        if (mBaseImage != null) {
-            g.drawImage(mBaseImage, 0, 0, this);
-        }
     }
 
     /****************************************************************************/
