@@ -183,19 +183,12 @@ public class CPainting extends Canvas implements MouseListener {
      ******************************************************************************/
     @Override
     public void paint(Graphics pGraphics) {
-//        for (int i = 0; i < mDimension.width; i++) {
-//            for (int j = 0; j < mDimension.height; j++) {
-//                pGraphics.setColor(new Color(getCouleurRGB(i, j)));
-//                pGraphics.fillRect(i, j, 1, 1);
-//            }
-//        }
-        DataBufferInt a  = (DataBufferInt) img.getRaster().getDataBuffer();
-         for (int i = 0; i < a.getSize(); i++) {
-                pGraphics.setColor(new Color(a.getElem(i)));
-                pGraphics.fillRect(i % mDimension.width, i / mDimension.width, 1, 1);
-        }
+    }
 
-//        pGraphics.drawImage(img, 0, 0, null);
+    @Override
+    public void update(Graphics g) {
+        paint(img.getGraphics());
+        g.drawImage(img, 0, 0, this);
     }
 
     /******************************************************************************
@@ -217,12 +210,15 @@ public class CPainting extends Canvas implements MouseListener {
             switch (pTaille) {
                 case 1:
                     convol(mMatriceConv9, mMatriceFactor9, x, y);
+                    this.repaint(x - mMatriceConv9.length / 2, y - mMatriceConv9.length / 2, mMatriceConv9.length, mMatriceConv9.length);
                     break;
                 case 2:
                     convol(mMatriceConv25, mMatriceFactor25, x, y);
+                    this.repaint(x - mMatriceConv25.length / 2, y - mMatriceConv25.length / 2, mMatriceConv25.length, mMatriceConv25.length);
                     break;
                 case 3:
                     convol(mMatriceConv49, mMatriceFactor49, x, y);
+                    this.repaint(x - mMatriceConv49.length / 2, y - mMatriceConv49.length / 2, mMatriceConv49.length, mMatriceConv49.length);
                     break;
             }// end switch
         }
