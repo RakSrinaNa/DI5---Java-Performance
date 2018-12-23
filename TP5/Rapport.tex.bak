@@ -11,8 +11,6 @@
 		Le but de ce TP est de mobiliser les différents éléments que nous avons pu voir lors des derniers TPs afin d'améliorer les performances d'une application complète.
 		
 		Afin d'avoir une meilleure idée de la progression qui a été faite, nous avons découpé notre travail en plusieurs branches qui apportent chacune un différent set d'amélioration.
-		
-		De plus le fichier ants\_worst est celui qui a été utilisé tout le long des tests.
 	
 	\chapter{Branche: victor}
 		Cette branche est la branche de base qui contient un code non modifié.
@@ -87,13 +85,10 @@
 		En effet auparavant nous utilisions un tableau 2D d'int qui était copié dans le canvas.
 		Grâce à la buffered image on renseigne notre couleur dedans (en s'affranchissant de créer un objet Color pour le pixel à peindre) et écrivons directement notre image sur le canvas.
 		
-		De plus il est possible de définir l'image à peindre sans avoir à toujours peindre cette dernière dans le repaint.
-		De ce fait notre méthode repaint est maintenant vide et tout se passe dans update.
-		La problématique engendrée par cela est que si l'on pause le rafraichissement du canvas, lors de la reprise nous verrons les fourmis se téléporter (même si l'image a bien été peinte entre temps).
-		Il faudra attendre qu'elles passent dans une zone assez proche pour rafraichir les zones non à jour.		
+		De plus il est possible de définir l'image à peindre sans avoir à toujours peindre cette derni		
 		
-		Grâce à cette amélioration nous atteignons les 16000 DPS ce qu'il est une amélioration conséquence qui double presque les DPS de base.
+		FPS 5.4: 16k
 		
 	\chapter{Branche tp5.5}
-		Branche non terminée qui visait à fixer le problème cité précédemment (zones ne se mettant pas à jour lors de la reprise).
+		
 \end{document}
