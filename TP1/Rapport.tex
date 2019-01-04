@@ -9,6 +9,155 @@
 \begin{document}
 	\mccTitle
 	
-	\chapter{Question 1}
+	\chapter{Test des coutils}
+		\section{vmstat}
+			vmstat est un outil en ligne de commande permettant d'obtenir différentes informations sur la VM Java:
+			\begin{easylist}[itemize]
+				@ Nombre de processus:
+				@@ Processus en cours d'exécution
+				@@ Processus dormants qu'on ne peut interrompre
+				@ Mémoire:
+				@@ Mémoire virtuelle utilisée
+				@@ Mémoire libre
+				@@ Mémoire buffer
+				@@ Mémoire cache
+				@@ Mémoire inactive
+				@@ Mémoire active
+				@ Swap
+				@@ Entrée
+				@@ Sortie
+				@ IO
+				@@ Lecture
+				@@ Ecriture
+				@ Système
+				@@ Nombre d'interruptions par seconde
+				@@ Nombre de changement de contexte
+				@ CPU
+				@@ Temps en non-kernel
+				@@ Temps en kernel
+				@@ Temps en attente
+				@@ Temps en attente d'IO
+				@@ Temps pour la VM
+			\end{easylist}
+			
+			\img{vmstat1.png}{Sortie vmstat au lancement d'Eclipse}{0.5}
+			
+			En observant notamment les colonnes mémoire libre;tampon;cache, io bi, cpu us on peut remarquer que:
+			\begin{easylist}[itemize]
+				@ La mémoire libre diminue tandis que la mémoire cache augmente
+				@ La lecture des fichiers explose
+				@ Une légère augmentation de l'écriture de fichiers de temps en temps
+				@ Le temps CPU non kernel augmente tendis que le temps CPU en attente diminue.	
+			\end{easylist}
+
+			Vmstat nous permet donc d'obtenir des informations globales sur l'état du système et non de la VM Java.
+			Il n'est pas possible de faire une analyse poussée des besoins en resources d'un programme en particulier.		
 				
+		\section{iostat}
+			Iostat permet d'obtenir des information générales sur les IOs (par périphérique) et CPU de tout le système.
+			Cela peut être répété $n$ fois avec un interval donné.
+			
+			\img{iostat1.png}{iostat avec Eclipse ouvert}{0.5}
+			
+			De manière similaire à vmstat, cet outil est assez peu précis concernant Java étant donné que les statistiques obtenues concernent tout le système.
+			Des interférences d'autres programmes peuvent altérer notre analyse.
+			
+		\section{nicstat}
+			Cet outil est similaire à iostat à la différence qu'il analyse les données transitant par les cartes réseau.
+			De ce fait il ne serait utile que le cas d'un programme Java utilisant la connectivité réseau.
+			Il faut cependant faire attention à ce que d'autres programmes ne se servent pas du réseau en même temps.
+			
+			\img{nicstat1.png}{Evolution du réseau lors du rafraichissement des packages disponibles dans Eclipse}{0.5}
+			
+			On peut imaginer que ces 3 derniers outils très simplistes peuvent cependant être utilisés dans dans scripts afin de faire du monitoring.
+			
+		\section{JCMD}
+			\cbo{jcmd} permet d'obtenir les différents processus Java lancés.
+			
+			On peut par la suite lancer \cbo{jcmd <PID> <command>} pour effectuer des commandes sur la JVM.
+			On retrouve notamment la commande help pour obtenir la liste des commandes disponibles.
+			
+			La commande \cbo{Thread.print} affiche tous les threads lancés ainsi que leur status et pile d'appel.
+			
+			La commande \cbo{GC.run} permet de lancer le GC manuellement.
+			
+			De manière générale JCMD se connecte à la VM pour exécuter des commandes pour obtenir des informations sur la VM mais aussi pour exécuter des actions sur celle-ci.
+			En comparaison avec les précédents, cet outil, bien que plus puissant n'est que peu intégrable à des scripts dû aux différentes commandes à appeler dans la nouvelle console.
+			
+			Un avantage non négligeable de JCMD est que, étant connecté directement à la JVM, il n'est pas influencé par des processus externes.
+			
+		\section{JConsole}
+			On retrouve des informations que nous avons déjà pu voir auparavant (Mémoire, Threads, etc.) mais sous forme graphique.
+			
+			Grâce à cette présentation, il est possible d'analyser l'évolution de la JVM au cours du temps ainsi que de pouvoir corréler différentes métriques d'un simple coup d'\oe il.
+			De plus, ce type d'interface offre un gain de temps considérable dû à l'aisance de navigation entre les différentes informations.
+			Pour la même raison, un utilisateur débutant pourra trouver les informations qu'il cherche sans avoir à retenir toutes les commandes JCMD.
+						
+			\begin{figure}[H]
+				\begin{minipage}{0.49\textwidth}
+					\img{jconsole1.png}{Eclipse en fond (vue générale)}{0.25}
+				\end{minipage}
+				\begin{minipage}{0.49\textwidth}
+					\img{jconsole2.png}{Eclipse en fond (Mémoire heap)}{0.25}
+				\end{minipage}
+			\end{figure}
+			
+			Cependant nous devons nous connecter à une application déjà lancée.
+			Il est donc difficile de récupérer les statistiques au lancement d'une application.
+			
+		\section{JHat}
+			JHat permet d'analyser les fichier hprof de la JVM.
+			Ceux-ci contiennent des informations sur le CPU et la mémoire heap.
+			
+			Nous pouvons un de ces fichiers à la volée grâce à \cbo{jmap -dump:file=<file> <pid>}.
+			Ils sont aussi potentiellement créés lorsque la JVM crash.
+			
+			Il nous suffit ensuite de l'ouvrir avec \cbo{jhat <file>}.
+			Dès que le fichier est analysé, un serveur HTTP est crée.
+			Nous retrouvons sur ce dernier les informations du fichier sous forme visuelle.
+			
+			Ce type de fichier trouve toute son utilité après un crash de la JVM car il permet de remonter aux derniers instants de vie de la VM.
+			Cela peut donc permettre de trouver la cause du crash.
+			
+			\img{jhat1.png}{Toutes les classes}{0.4}
+			\img{jhat2.png}{Détails d'une classe}{0.4}
+			
+			
+		\section{JStack}
+			Affiche la liste des threads de la VM, similaire à \cbo{Thread.print} de JCMD.
+			
+			Cela n'a que peu d'intérêt lorsque l'on maitrise JCMD mais peut permettre à un débutant ou à un script d'accéder aux informations sur les threads.
+			
+		\section{JVisualVM}
+			Outil similaire à JConsole affichant des graphes des différentes métriques de la VM.
+			
+			Il est possible d'ajouter des plugins ce qui offre une multitude de possibilités selon nos besoins.
+			On peut notamment citer le plugin GC permettant d'avoir des informations sur le garbage collector.
+			
+		\section{Java Mission Control}
+			Encore une interface similaire aux autres, affichant de nombreux graphiques et tableaux sur l'état de la VM et permet aussi l'ajout de plugins pour étendre les fonctionnalités.
+			
+			De plus il offre la possibilité d'enregistrer sur une période de temps donnée des métriques choisies.
+			Cette fonctionnalité de cibler les actions que l'on veut étudier en enregistrant que l'évolution du processus lors de ces actions.
+			Additionnellement on peut personnaliser les métriques étudies en ne sélectionnant que celles que l'on souhaite ainsi que leur niveau de détail.
+			
+			la possibilité de sauvegarder ces résultats permet de les analyser plus tard voir même de les archiver pour comparaisons ultérieures.
+			
+			\img{jmc2.png}{Page GC de Java Mission Control}{0.3}
+			
+		\section{Conclusion}
+			Parmi tous les outils étudiés, on remarque deux catégories:
+			\begin{easylist}[itemize]
+				@ Les outils console:
+				@@ Outils analysant le système: Ils permettent une analyse générale de tout l'état du système.
+				Cela peut permettre de détecter des comportement anormaux mais peut être fortement sujet à des perturbations externes. 
+				Il faut donc les utiliser avec prudence et ne pas tirer de conclusions trop rapidement.
+				@@ Outils analysant la JVM: Ceux-ci sont plus précis que les derniers car ils ciblent directement la JVM et ne sont donc pas perturbés par les processus externes.
+				Certains d'entre eux peuvent utilisés de manière automatisée dans des scripts afin de faire du monitoring.
+				@ Les outils graphiques: Ils sont bien plus simple d'utilisation pour un utilisateur humain mais sont difficiles (voir impossibles) à automatiser.
+				De plus ils présentent les informations de manière graphique au cours du temps ce qui permet une analyse rapide pour ensuite cibler plus précisément le problème.
+				Enfin certains d'entre eux proposent l'ajout de plugins afin d'étendre leur fonctionnalités selon les besoins.
+			\end{easylist}
+
+			
 \end{document}

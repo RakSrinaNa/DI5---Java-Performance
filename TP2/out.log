@@ -1,0 +1,81 @@
+# JMH version: 1.21
+# VM version: JDK 1.8.0_171, OpenJDK 64-Bit Server VM, 25.171-b11
+# VM invoker: /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 5 iterations, 10 s each
+# Measurement: 5 iterations, 10 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: fr.polytechtours.javaperformance.tp2.MyBenchmark.fact
+
+# Run progress: 0.00% complete, ETA 00:16:40
+# Fork: 1 of 5
+# Warmup Iteration   1: 84603912.755 ops/s
+# Warmup Iteration   2: 82896037.779 ops/s
+# Warmup Iteration   3: 97368528.704 ops/s
+# Warmup Iteration   4: 97875393.382 ops/s
+# Warmup Iteration   5: 97872525.925 ops/s
+Iteration   1: 97819325.439 ops/s
+Iteration   2: 98012719.194 ops/s
+Iteration   3: 97591403.605 ops/s
+Iteration   4: 97814943.829 ops/s
+Iteration   5: 96757314.458 ops/s
+
+# Run progress: 10.00% complete, ETA 00:15:06
+# Fork: 2 of 5
+# Warmup Iteration   1: 85290497.139 ops/s
+# Warmup Iteration   2: 82777393.661 ops/s
+# Warmup Iteration   3: 97806785.254 ops/s
+# Warmup Iteration   4: 97951394.470 ops/s
+# Warmup Iteration   5: 97921213.373 ops/s
+Iteration   1: 97939927.352 ops/s
+Iteration   2: 97868584.771 ops/s
+Iteration   3: 98095783.580 ops/s
+Iteration   4: 98099712.187 ops/s
+Iteration   5: 97887580.667 ops/s
+
+# Run progress: 20.00% complete, ETA 00:13:24
+# Fork: 3 of 5
+# Warmup Iteration   1: 85419408.056 ops/s
+# Warmup Iteration   2: 83225598.451 ops/s
+# Warmup Iteration   3: 97896644.463 ops/s
+# Warmup Iteration   4: 97752422.955 ops/s
+# Warmup Iteration   5: 97583200.816 ops/s
+Iteration   1: 97456878.760 ops/s
+Iteration   2: 97658458.826 ops/s
+Iteration   3: 97869433.122 ops/s
+Iteration   4: 97825488.380 ops/s
+Iteration   5: 97631526.478 ops/s
+
+# Run progress: 30.00% complete, ETA 00:11:43
+# Fork: 4 of 5
+# Warmup Iteration   1: 85280330.363 ops/s
+# Warmup Iteration   2: 83234718.351 ops/s
+# Warmup Iteration   3: 97957582.498 ops/s
+# Warmup Iteration   4: 97359323.794 ops/s
+# Warmup Iteration   5: 97928819.893 ops/s
+Iteration   1: 97942649.273 ops/s
+Iteration   2: 97913140.638 ops/s
+Iteration   3: 98081409.370 ops/s
+Iteration   4: 97774009.651 ops/s
+Iteration   5: 97438788.773 ops/s
+
+# Run progress: 40.00% complete, ETA 00:10:03
+# Fork: 5 of 5
+# Warmup Iteration   1: 85336199.983 ops/s
+# Warmup Iteration   2: 83213631.656 ops/s
+# Warmup Iteration   3: 97838773.067 ops/s
+# Warmup Iteration   4: 97956246.539 ops/s
+# Warmup Iteration   5: 98024030.802 ops/s
+Iteration   1: 98029100.103 ops/s
+Iteration   2: 97628740.314 ops/s
+Iteration   3: 97603188.114 ops/s
+Iteration   4: 97926136.932 ops/s
+Iteration   5: 98051650.436 ops/s
+
+
+Result "fr.polytechtours.javaperformance.tp2.MyBenchmark.fact":
+  97788715.770 +-(99.9%) 216107.541 ops/s [Average]
+  (min, avg, max) = (96757314.458, 97788715.770, 98099712.187), stdev = 288497.384
+  CI (99.9%): [97572608.229, 98004823.311] (assumes normal distribution)

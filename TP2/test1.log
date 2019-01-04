@@ -1,0 +1,232 @@
+/usr/lib/jvm/java-8-openjdk-amd64/bin/java -Dfile.encoding=UTF-8 -classpath /home/administrateur/java-performance/TP2/jmh/target/classes:/home/administrateur/.m2/repository/org/openjdk/jmh/jmh-core/1.21/jmh-core-1.21.jar:/home/administrateur/.m2/repository/net/sf/jopt-simple/jopt-simple/4.6/jopt-simple-4.6.jar:/home/administrateur/.m2/repository/org/apache/commons/commons-math3/3.2/commons-math3-3.2.jar org.openjdk.jmh.Main fr.polytechtours.javaperformance.tp2.MyBenchmark.testFact
+# JMH version: 1.21
+# VM version: JDK 1.8.0_171, OpenJDK 64-Bit Server VM, 25.171-b11
+# VM invoker: /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 2 iterations, 8 s each, 3 calls per op
+# Measurement: 2 iterations, 8 s each, 3 calls per op
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: fr.polytechtours.javaperformance.tp2.MyBenchmark.testFact
+# Parameters: (i = 5)
+
+# Run progress: 0.00% complete, ETA 00:10:40
+# Fork: 1 of 5
+# Warmup Iteration   1: 34184128.324 ops/s
+# Warmup Iteration   2: 34243355.426 ops/s
+Iteration   1: 36966209.906 ops/s
+Iteration   2: 37019988.225 ops/s
+
+# Run progress: 5.00% complete, ETA 00:10:20
+# Fork: 2 of 5
+# Warmup Iteration   1: 34250375.360 ops/s
+# Warmup Iteration   2: 34342354.020 ops/s
+Iteration   1: 36990467.431 ops/s
+Iteration   2: 37012533.437 ops/s
+
+# Run progress: 10.00% complete, ETA 00:09:46
+# Fork: 3 of 5
+# Warmup Iteration   1: 34473475.462 ops/s
+# Warmup Iteration   2: 34307633.154 ops/s
+Iteration   1: 36914148.989 ops/s
+Iteration   2: 36987234.257 ops/s
+
+# Run progress: 15.00% complete, ETA 00:09:12
+# Fork: 4 of 5
+# Warmup Iteration   1: 34477894.617 ops/s
+# Warmup Iteration   2: 34379701.843 ops/s
+Iteration   1: 37011530.946 ops/s
+Iteration   2: 37034420.410 ops/s
+
+# Run progress: 20.00% complete, ETA 00:08:40
+# Fork: 5 of 5
+# Warmup Iteration   1: 34315880.488 ops/s
+# Warmup Iteration   2: 33621932.184 ops/s
+Iteration   1: 36993942.947 ops/s
+Iteration   2: 36813939.813 ops/s
+
+
+Result "fr.polytechtours.javaperformance.tp2.MyBenchmark.testFact":
+  36974441.636 ±(99.9%) 99219.936 ops/s [Average]
+  (min, avg, max) = (36813939.813, 36974441.636, 37034420.410), stdev = 65627.844
+  CI (99.9%): [36875221.700, 37073661.572] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 1.8.0_171, OpenJDK 64-Bit Server VM, 25.171-b11
+# VM invoker: /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 2 iterations, 8 s each, 3 calls per op
+# Measurement: 2 iterations, 8 s each, 3 calls per op
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: fr.polytechtours.javaperformance.tp2.MyBenchmark.testFact
+# Parameters: (i = 10)
+
+# Run progress: 25.00% complete, ETA 00:08:07
+# Fork: 1 of 5
+# Warmup Iteration   1: 27553218.507 ops/s
+# Warmup Iteration   2: 28861493.988 ops/s
+Iteration   1: 30689097.219 ops/s
+Iteration   2: 30787414.087 ops/s
+
+# Run progress: 30.00% complete, ETA 00:07:34
+# Fork: 2 of 5
+# Warmup Iteration   1: 27678534.148 ops/s
+# Warmup Iteration   2: 28904018.721 ops/s
+Iteration   1: 30865409.378 ops/s
+Iteration   2: 30731994.046 ops/s
+
+# Run progress: 35.00% complete, ETA 00:07:02
+# Fork: 3 of 5
+# Warmup Iteration   1: 27544844.859 ops/s
+# Warmup Iteration   2: 28839402.992 ops/s
+Iteration   1: 30463526.129 ops/s
+Iteration   2: 30433204.518 ops/s
+
+# Run progress: 40.00% complete, ETA 00:06:29
+# Fork: 4 of 5
+# Warmup Iteration   1: 27130384.877 ops/s
+# Warmup Iteration   2: 28504257.801 ops/s
+Iteration   1: 30594066.069 ops/s
+Iteration   2: 30846168.980 ops/s
+
+# Run progress: 45.00% complete, ETA 00:05:57
+# Fork: 5 of 5
+# Warmup Iteration   1: 27707030.890 ops/s
+# Warmup Iteration   2: 28839846.745 ops/s
+Iteration   1: 30436617.121 ops/s
+Iteration   2: 30850546.273 ops/s
+
+
+Result "fr.polytechtours.javaperformance.tp2.MyBenchmark.testFact":
+  30669804.382 ±(99.9%) 266069.720 ops/s [Average]
+  (min, avg, max) = (30433204.518, 30669804.382, 30865409.378), stdev = 175988.646
+  CI (99.9%): [30403734.662, 30935874.102] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 1.8.0_171, OpenJDK 64-Bit Server VM, 25.171-b11
+# VM invoker: /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 2 iterations, 8 s each, 3 calls per op
+# Measurement: 2 iterations, 8 s each, 3 calls per op
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: fr.polytechtours.javaperformance.tp2.MyBenchmark.testFactRec
+# Parameters: (i = 5)
+
+# Run progress: 50.00% complete, ETA 00:05:24
+# Fork: 1 of 5
+# Warmup Iteration   1: 19915666.393 ops/s
+# Warmup Iteration   2: 19897575.919 ops/s
+Iteration   1: 22748890.287 ops/s
+Iteration   2: 22750997.025 ops/s
+
+# Run progress: 55.00% complete, ETA 00:04:52
+# Fork: 2 of 5
+# Warmup Iteration   1: 19924844.577 ops/s
+# Warmup Iteration   2: 19879373.446 ops/s
+Iteration   1: 22826310.028 ops/s
+Iteration   2: 22775810.971 ops/s
+
+# Run progress: 60.00% complete, ETA 00:04:19
+# Fork: 3 of 5
+# Warmup Iteration   1: 19957226.719 ops/s
+# Warmup Iteration   2: 19980665.216 ops/s
+Iteration   1: 21547956.830 ops/s
+Iteration   2: 21543613.018 ops/s
+
+# Run progress: 65.00% complete, ETA 00:03:47
+# Fork: 4 of 5
+# Warmup Iteration   1: 19888478.566 ops/s
+# Warmup Iteration   2: 19882475.569 ops/s
+Iteration   1: 22705099.738 ops/s
+Iteration   2: 22618823.057 ops/s
+
+# Run progress: 70.00% complete, ETA 00:03:14
+# Fork: 5 of 5
+# Warmup Iteration   1: 19820103.705 ops/s
+# Warmup Iteration   2: 19967016.211 ops/s
+Iteration   1: 22830822.808 ops/s
+Iteration   2: 22828170.471 ops/s
+
+
+Result "fr.polytechtours.javaperformance.tp2.MyBenchmark.testFactRec":
+  22517649.423 ±(99.9%) 780519.257 ops/s [Average]
+  (min, avg, max) = (21543613.018, 22517649.423, 22830822.808), stdev = 516265.161
+  CI (99.9%): [21737130.167, 23298168.680] (assumes normal distribution)
+
+
+# JMH version: 1.21
+# VM version: JDK 1.8.0_171, OpenJDK 64-Bit Server VM, 25.171-b11
+# VM invoker: /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+# VM options: -Dfile.encoding=UTF-8
+# Warmup: 2 iterations, 8 s each, 3 calls per op
+# Measurement: 2 iterations, 8 s each, 3 calls per op
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Throughput, ops/time
+# Benchmark: fr.polytechtours.javaperformance.tp2.MyBenchmark.testFactRec
+# Parameters: (i = 10)
+
+# Run progress: 75.00% complete, ETA 00:02:42
+# Fork: 1 of 5
+# Warmup Iteration   1: 13220788.034 ops/s
+# Warmup Iteration   2: 13228775.812 ops/s
+Iteration   1: 14305172.184 ops/s
+Iteration   2: 14313580.798 ops/s
+
+# Run progress: 80.00% complete, ETA 00:02:09
+# Fork: 2 of 5
+# Warmup Iteration   1: 13204210.198 ops/s
+# Warmup Iteration   2: 13213419.535 ops/s
+Iteration   1: 14321039.170 ops/s
+Iteration   2: 14294503.614 ops/s
+
+# Run progress: 85.00% complete, ETA 00:01:37
+# Fork: 3 of 5
+# Warmup Iteration   1: 13199849.776 ops/s
+# Warmup Iteration   2: 13241996.273 ops/s
+Iteration   1: 14310835.495 ops/s
+Iteration   2: 14335261.140 ops/s
+
+# Run progress: 90.00% complete, ETA 00:01:04
+# Fork: 4 of 5
+# Warmup Iteration   1: 13217602.898 ops/s
+# Warmup Iteration   2: 13218197.788 ops/s
+Iteration   1: 14276539.347 ops/s
+Iteration   2: 14295494.625 ops/s
+
+# Run progress: 95.00% complete, ETA 00:00:32
+# Fork: 5 of 5
+# Warmup Iteration   1: 13224955.041 ops/s
+# Warmup Iteration   2: 13215560.829 ops/s
+Iteration   1: 14304564.192 ops/s
+Iteration   2: 14314403.642 ops/s
+
+
+Result "fr.polytechtours.javaperformance.tp2.MyBenchmark.testFactRec":
+  14307139.420 ±(99.9%) 24347.144 ops/s [Average]
+  (min, avg, max) = (14276539.347, 14307139.420, 14335261.140), stdev = 16104.128
+  CI (99.9%): [14282792.276, 14331486.565] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:10:49
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+Benchmark                (i)   Mode  Cnt         Score        Error  Units
+MyBenchmark.testFact       5  thrpt   10  36974441.636 ±  99219.936  ops/s
+MyBenchmark.testFact      10  thrpt   10  30669804.382 ± 266069.720  ops/s
+MyBenchmark.testFactRec    5  thrpt   10  22517649.423 ± 780519.257  ops/s
+MyBenchmark.testFactRec   10  thrpt   10  14307139.420 ±  24347.144  ops/s
+
+Process finished with exit code 0

@@ -1,0 +1,120 @@
+\documentclass[12pt]{extreport}
+\usepackage{MCC}
+
+\def\footauthor{Thomas COUCHOUD \& Victor COLEAU}
+\title{Java Performance - TP4}
+\author{Thomas COUCHOUD\\\texttt{thomas.couchoud@etu.univ-tours.fr}\\Victor COLEAU\\\texttt{victor.coleau@etu.univ-tours.fr}}
+
+\begin{document}
+	\mccTitle
+	
+	\chapter{Introduction}
+		Dans ce TP nous allons nous attaquer à de petits exercices dont le code est très peu performant afin d'étudier les possibilités d'amélioration.
+		
+		Ce document présente les différentes actions mises en place ainsi que leur résultats.
+	
+	\chapter{Exercices}
+	\section{Exercice 1}
+		On remarque que beaucoup de types utilisés des classes (Float, Integer, ...), il serait donc peut-être plus efficace d'utiliser des types primitifs directement afin d'éviter d'inutiles opérations d'unboxing/boxing.
+		
+		De plus nous avons changé les "k = k + 1" en "k++".
+		Cependant cela n'aura surement aucun effet sur les performances car le nombre d'opérations est le même.
+		Il est à noter que le compilateur le change en ++k, évitant ainsi de stocker une valeur intermédiaire pour la renvoyer par la suite.
+		
+		Après des mini benchmarks nous obtenons la sortie suivante:
+		\lstinputlisting[caption=benchmark.txt]{jmh/exo1_Bench.txt}
+		
+		Avec nos améliorations on peut constater que le score est multiplié par environ 5.
+		Cela est probablement du aux changement des types plus qu'à la transformation des incrémentations.
+
+	\section{Exercice 2}
+		La première remarque est que dans le calcul d'une valeur de fibonacci, le calcul des deux précédentes est nécessaire.
+		Or dans l'implémentation donné fibonacci(i-1) et fibonacci(i-2) sont indépendantes alors que fibonacci(i-1) utilise et donc recalcule lui-même fibonacci(i-2).
+		De ce fait, le calcul de fibonnaci($n$) demande le calcul de $2^n$ fois fibonnacci(1) + fibonacci(2).
+		Une grande partie de ces calculs sont inutiles et peuvent être très long sur des grandes valeurs.
+		
+		Nous allons donc mettre en place un système de cache des valeurs au travers d'une map (fibonaciA).
+		Celle-ci aura pour but de sauvegarder les valeurs une fois calculées et de les renvoyer à la place de faire le calcul les fois suivantes.
+				
+		De plus, étant donné que l'on demande la valeur de fibonacci(43), nous pouvons aussi renvoyer la valeur directement en l'ayant calculée auparavant (fibonacciB).
+		
+		\lstinputlisting[caption=benchmark.txt]{jmh/exo2_Bench2.txt}
+		
+		L'amélioration est ici flagrante avec le cache, et encore plus avec la valeur renvoyée directement.
+		Avec le cache cela s'explique car une très grosse majorité des calculs sont évités.
+		Dans le cas de la valeur directe, il ne s'agit en réalité que d'un appel de getter.
+	
+	\section{Exercice 3}
+		Dans les deux exercices suivants, nous n'avons pas pu comparer avec les méthodes de base car ces dernières font crasher la VM.
+		Nous pouvons cependant déduire les potentielles améliorations grâce au temps d'exécutions des tests unitaires.
+		En effet les méthodes de base durent environ 1m30 alors que les versions améliorées sont aux alentours de 30s (pour 3a) et 1m (pour 3b).
+	
+		\subsection{Exercice 3a}
+			Dans une première méthode "A" nous avons:
+			\begin{easylist}
+				@ Retiré le synchronized de la méthode. En effet on a déjà un mutex à l'intérieur de la fonction et il n'est donc pas nécessaire d'en avoir deux. De plus le synchronized sur la méthode bloque toutes les autres méthodes synchronized ce qui n'est pas optimal car ralenti l'ensemble des appels à l'objet.
+				@ Changé les Integer en int afin d'éviter les boxing/unboxing inutiles.
+				@ Ajout direct du future dans la liste au lieu de la création d'un objet intermédiaire.
+				@ Shutdown de l'ExecutorService car il n'est plus nécessaire d'ajouter de nouveaux jobs par la suite.
+			\end{easylist}
+			
+			Une deuxième méthode "B" reprend les modifications de la méthode "A" mais utilise cette fois-ci un AtomicInteger afin de retirer le mutex dans la fonction d'incrémentation, la gestion de la concurrence étant directement faite au sein de la méthode incrementAndGet.
+			
+			Les résultats sont les suivants:
+			\lstinputlisting[caption=benchmark.txt]{jmh/exo3a_Bench.txt}
+			
+			On voit que dans le cas de très petites instances (10 threads, 10 incrémentations), le AtomicInteger est légèrement plus efficace que le mutex.
+			Cependant dès que la charge de travail par thread augmente un petit peu (10 threads, 10000 incrémentations), le mutex reprend l'avantage.
+			
+			Dans le cas de très grosses instances (100 threads, 10000 incrémentations), le mutex domine (jusqu'à deux fois plus efficace).
+		
+		\subsection{Exercice 3b}
+			Nous avons ici repris les mêmes idées que dans l'exercice 3a cependant nous avons du changer le incrementAndGet du AtomicInteger en accumulateAndGet afin d'y ajouter le calcul du modulo.
+			
+			Les résultats sont les suivants:
+			\lstinputlisting[caption=benchmark.txt]{jmh/exo3b_Bench.txt}
+			
+			La première chose que l'on remarque est que la méthode avec l'AtomicInteger n'est que peu sensible à la variation du modulo (k).
+			Par exemple dans le cas de i=10/j=10000, que le modulo soit à 10 ou 10000 le score est d'environ 43.
+			En revanche la méthode avec le mutex y est bien plus sensible: passage de 118 à 34 ops/s.
+			
+			Concernant la comparaison entre A et B, on remarque que les valeurs se ressemblent fortement à l'exception du cas 10/10000/10 où la méthode A est bien meilleure.
+
+	\section{Exercice 4}
+		La première chose que nous remarquons est que l'on fait une boucle for pour ajouter tous les éléments d'un tableau.
+		
+		La première méthode consistant à utiliser le .addAll de la liste (exercice4A).
+		Cependant cela nous a forcé à convertir pleins de types ce qui ne va probablement pas être optimal.
+		
+		Une deuxième méthode a été d'utiliser directement les streams avec un flatMap (exercice4C), cependant encore une fois cela implique de faire des conversions de type.
+		
+		Notre dernière méthode consiste à d'abord calculer la taille du tableau final, puis le remplir directement (exercice4B).
+		Cela évite d'ajouter une fois dans une liste, puis d'ajouter dans un tableau.
+		
+		\lstinputlisting[caption=benchmark.txt]{jmh/exo4_Bench.txt}
+		
+		Le A est environ deux fois plus lent que l'original.
+		Ce qui prouve que notre conversion de types n'est pas efficace du tout et qu'il vaut mieux travailler directement des bytes.
+		
+		Le C est environ 1,5 fois plus rapide.
+		En effet comparé à la méthode A, on change toujours le type mais on s'affranchit de la liste intermédiaire et construisons directement le tableau final.
+		
+		Enfin la méthode B est la meilleure en étant 2 à 3 fois plus rapide que l'originale.
+		Cela est du au fait que l'on créé directement le tableau final mais cette fois sans aucune conversion de type.
+	
+	\section{Exercice 5}
+		Ici la réfléxivité est utilisée sur un objet dont on connait déjà le type et qui contient déjà la méthode à appeler.
+		Tout cet enchainement est inutile car nous pouvons appeler le .getName() directement sur notre objet.
+		Cela va nous permettre de s'affranchir de la recherche de la méthode et invokation de cette dernière.
+		
+		\lstinputlisting[caption=benchmark.txt]{jmh/exo5_Bench.txt}
+		
+		Encore une fois on remarque que ces changements ont grandement augmenté les performances.
+	
+	\chapter{Conclusion}
+		Ce TP nous a permis de découvrir certaines pratiques heurtant les performances Java.
+		On peut notamment citer le boxing/unboxing qui, à grande échelle, affecte grandement l'efficacité d'un programme et n'est donc pas à sous-estimer.
+		
+		Grâce à ce TP nous avons pu prendre conscience d'une partie de l'étendue des possibilités d'amélioration, même les plus inattendues, tout en estimant l'impact qu'elles peuvent avoir.
+	
+\end{document}

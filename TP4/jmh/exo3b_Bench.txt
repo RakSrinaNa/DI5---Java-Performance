@@ -1,0 +1,17 @@
+Benchmark         (i)    (j)    (k)   Mode  Cnt    Score     Error  Units
+Exercice3b.testA   10     10     10  thrpt   10  365.719 += 14.945  ops/s
+Exercice3b.testA   10     10  10000  thrpt   10  372.611 +=  5.261  ops/s
+Exercice3b.testA   10  10000     10  thrpt   10  118.434 +=  3.041  ops/s
+Exercice3b.testA   10  10000  10000  thrpt   10   34.882 +=  0.916  ops/s
+Exercice3b.testA  100     10     10  thrpt   10   31.480 +=  1.349  ops/s
+Exercice3b.testA  100     10  10000  thrpt   10   31.489 +=  1.144  ops/s
+Exercice3b.testA  100  10000     10  thrpt   10   11.943 +=  0.485  ops/s
+Exercice3b.testA  100  10000  10000  thrpt   10    3.262 +=  0.122  ops/s
+Exercice3b.testB   10     10     10  thrpt   10  367.267 +=  8.472  ops/s
+Exercice3b.testB   10     10  10000  thrpt   10  368.095 += 13.389  ops/s
+Exercice3b.testB   10  10000     10  thrpt   10   45.170 +=  4.755  ops/s
+Exercice3b.testB   10  10000  10000  thrpt   10   43.152 +=  3.459  ops/s
+Exercice3b.testB  100     10     10  thrpt   10   31.768 +=  1.219  ops/s
+Exercice3b.testB  100     10  10000  thrpt   10   31.432 +=  1.360  ops/s
+Exercice3b.testB  100  10000     10  thrpt   10    4.452 +=  0.385  ops/s
+Exercice3b.testB  100  10000  10000  thrpt   10    4.042 +=  0.291  ops/s

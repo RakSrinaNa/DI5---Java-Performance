@@ -1,0 +1,9 @@
+Benchmark                                     (i)   Mode  Cnt        Score         Error  Units
+Exercice4.test                   0123456789abcdef  thrpt   10  1261932.848 +=   62680.505  ops/s
+Exercice4.test   00112233445566778899AABBCCDDEEFF  thrpt   10   711723.644 +=    9534.811  ops/s
+Exercice4.testA                  0123456789abcdef  thrpt   10   616737.894 +=   17372.461  ops/s
+Exercice4.testA  00112233445566778899AABBCCDDEEFF  thrpt   10   384871.426 +=   10044.636  ops/s
+Exercice4.testB                  0123456789abcdef  thrpt   10  2476346.319 += 1193288.087  ops/s
+Exercice4.testB  00112233445566778899AABBCCDDEEFF  thrpt   10  1852733.463 +=  854509.849  ops/s
+Exercice4.testC                  0123456789abcdef  thrpt   10   847892.612 +=   40829.721  ops/s
+Exercice4.testC  00112233445566778899AABBCCDDEEFF  thrpt   10   689494.593 +=   18839.536  ops/s
