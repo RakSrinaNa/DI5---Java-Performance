@@ -11,12 +11,10 @@
 		Le but de ce TP est de mobiliser les différents éléments que nous avons pu voir lors des derniers TPs afin d'améliorer les performances d'une application complète.
 		
 		Afin d'avoir une meilleure idée de la progression qui a été faite, nous avons découpé notre travail en plusieurs branches qui apportent chacune un différent set d'amélioration.
-		
-		De plus le fichier ants\_worst est celui qui a été utilisé tout le long des tests.
 	
 	\chapter{Branche: victor}
 		Cette branche est la branche de base qui contient un code non modifié.
-		Les tests qui sont effectués afin de calculer le nombre de calcul de déplacements de fourmis par seconde (nombre en bas à gauche de la fenêtre, appelés DPS par la suite) ont tous été réalisés sur la même machine avec Java 8.
+		Les tests qui sont effectués afin de calculer le nombre de calcul de déplacements de fourmis par seconde (nombre en bas à gauche de la fenêtre, appelés DPS par la suite) ont tous étés réalisés sur la même machine avec Java 8.
 		
 		
 		Ainsi on observe un DPS de base de l'ordre de 7500 à 8750.
@@ -30,18 +28,18 @@
 			@ Changement des types Objet en types primitifs afin d'éviter un grand nombre de boxing/unboxing.
 			@ Utilisation de List<?> au lieu de Vector<?> (évite la synchronisation).
 			@ Initialisation des matrices de convolution qu'une seule fois de manière statique au lieu de le faire à chaque itération.
-			@ Retirer les mutex inutiles qui génère de la synchronisation (et donc des temps d'attente) pour rien.
+			@ Retiré les mutex inutiles qui génère de la synchronisation (et donc des temps d'attente) pour rien.
 		\end{easylist}
 		
 		Avec ces différents changements nous arrivons à passer à 8500 - 9500 DPS.
 		L'amélioration est présente même si elle est relativement faible.
-		Cependant pour n'avoir changé que des types primitifs et objets utilisés cela reste une amélioration remarquable.
+		Cependant pour 'avoir changé que des types primitifs et objets utilisés cela reste une amélioration remarquable.
 		
 		Dans les branches suivantes nous allons tenter d'attaquer le problème plus en profondeur en changeant un peu la partie "algorithmique" du logiciel.
 		
 	\chapter{Branche: tp5.2}
 		Cette nouvelle branche, tp5.2, est basée sur tp5.1.
-		Nous allons donc hériter des changements qui ont déjà été faits.
+		Nous allons donc hériter des changements qui on déjà été faits.
 	
 		Changements effectués:
 		\begin{easylist}[itemize]
@@ -53,12 +51,12 @@
 		De plus ces couleurs sont définies de manière précise et dans un nombre limité.
 		Il est donc possible de réutiliser un objet si la couleur est déjà instanciée.
 		
-		Afin de réaliser cela, nous avons fait une classe qui reçoit la demande d'instanciation d'une couleur.
+		Afin de réaliser cela, nous avons fait une classe qui reçoit la demande d'istanciation d'une couleur.
 		Si cette dernière existe déjà dans un cache, on renvoie l'instance; sinon on la créée et l'ajoutons à notre cache.
 		
 		Grâce à ce cache, nous arrivons à un DPS de 9000.
 		Cela n'a pas amélioré les performances comparé à la branche tp5.1 mais a tout de même stabilisé un peu les DPS.
-		Cela peut peut-être être du au fait que le GC gère de lui même le fait que nous réutilisons les objets Color, bien que cela nous semble tout de même étrange qu'il gère ça.
+		Cela peut peut être du au fait que le GC gère de lui même le fait que nous réutilisons les objets Color mais cela semble tout de même étrange qu'il gère ça.
 		
 	\chapter{Branche tp5.3}
 		La branche tp5.3 est basée sur tp5.1.
@@ -87,13 +85,10 @@
 		En effet auparavant nous utilisions un tableau 2D d'int qui était copié dans le canvas.
 		Grâce à la buffered image on renseigne notre couleur dedans (en s'affranchissant de créer un objet Color pour le pixel à peindre) et écrivons directement notre image sur le canvas.
 		
-		De plus il est possible de définir l'image à peindre sans avoir à toujours peindre cette dernière dans le repaint.
-		De ce fait notre méthode repaint est maintenant vide et tout se passe dans update.
-		La problématique engendrée par cela est que si l'on pause le rafraichissement du canvas, lors de la reprise nous verrons les fourmis se téléporter (même si l'image a bien été peinte entre temps).
-		Il faudra attendre qu'elles passent dans une zone assez proche pour rafraichir les zones non à jour.		
+		De plus il est possible de définir l'image à peindre sans avoir à toujours peindre cette derni		
 		
-		Grâce à cette amélioration nous atteignons les 16000 DPS, ce qu'il est une amélioration plus que conséquence car elle nous permet de double ou presque les DPS de base.
+		FPS 5.4: 16k
 		
 	\chapter{Branche tp5.5}
-		Branche non terminée qui visait à fixer le problème cité précédemment (zones ne se mettant pas à jour lors de la reprise).
+		
 \end{document}
